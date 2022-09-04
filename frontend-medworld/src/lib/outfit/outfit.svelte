@@ -3,7 +3,7 @@
     export let outfitLabel:string;
 </script>
 
-<div class="border-2 md:w-8/12 w- h-1/10 flex-col items-center">
-    <h3 class="underline">{outfitLabel}</h3>
+<div class=" m-[15px] w-fit bg-white border-4 flex-col text-center rounded-3xl">
+    <h3 class="inline mx-auto my-1.5 text-2xl font-semibold uppercase">{outfitLabel}</h3>
     <img src="{imageURL}" alt="{outfitLabel}">
 </div>
