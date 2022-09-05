@@ -1,11 +1,7 @@
-<!-- <h1 class="text-3xl font-bold bg-white ">Hello world!</h1> -->
-
 <script lang="ts">
-    import Outfit from "../lib/outfit/outfit.svelte";
+    import OutfitWrapper from "$lib/outfit-wrapper/outfit-wrapper.svelte";
 </script>
 
-<main>
-    <h1 class="font-['Open_Sans'] font-bold	uppercase text-3xl text-center">Quelle tenue souhaiteriez-vous commander ?</h1>
-    <Outfit outfitLabel="Blouse" imageURL="/ressources/blouse.png"/>
-    <Outfit outfitLabel="Tenue de bloc" imageURL="/ressources/blouse.png"/>
-</main>
+<div>
+    <OutfitWrapper/>
+</div>
