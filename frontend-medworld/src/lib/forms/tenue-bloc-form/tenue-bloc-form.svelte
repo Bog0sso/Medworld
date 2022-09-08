@@ -1,0 +1,144 @@
+<script lang="ts">
+</script>
+
+<form class="mx-auto h-[100%] w-[60%]">
+	<fieldset class="flex-col bg-[#FEEEEE] w-[100%] mx-auto p-[10%]">
+		<h2 class="fieldset-title"> Informations personnelles </h2>
+		<div class="downward-input">
+			<label class="block" for="prenom">Prénom</label>
+			<input type="text" name="prenom" id="prenom" />
+		</div>
+
+		<div class="downward-input">
+			<label class="block" for="nom">Nom</label>
+			<input type="text" name="nom" id="nom" />
+		</div>
+
+		<div class="downward-input">
+			<label class="block" for="couleur">Couleur</label>
+			<input type="text" name="couleur" id="couleur" />
+		</div>
+
+		<div class="downward-input">
+			<label class="block" for="institution">Institution</label>
+			<input type="text" name="institution" id="institution" />
+		</div>
+	</fieldset>
+
+	<fieldset class="flex-col bg-[#FEEEEE] w-[100%] mx-auto p-[10%]">
+		<h2 class="fieldset-title"> Mesure </h2>
+
+		<div class="input-group">
+			<div id="group-epaule" class="downward-input w-[70%] m-0">
+				<label class="block  w-full overflow-hidden" for="epaule">Epaule</label><input
+					class="w-[100%] p-0"
+					id="epaule"
+					name="epaule"
+					type="text"
+				/>
+			</div>
+			<div id="group-poitrine" class="downward-input w-[30%] m-0">
+				<label class="block" for="poitrine">Poitrine</label><input
+					class="w-[100%]"
+					id="poitrine"
+					name="poitrine"
+					type="text"
+				/>
+			</div>
+		</div>
+
+		<div class="input-group">
+			<div id="group-epaule" class="downward-input w-[70%] m-0">
+				<label class="block  w-full overflow-hidden" for="epaule">Epaule</label><input
+					class="w-[100%] p-0"
+					id="epaule"
+					name="epaule"
+					type="text"
+				/>
+			</div>
+
+			<div id="group-poitrine" class="downward-input w-[30%] m-0">
+				<label class="block" for="poitrine">Poitrine</label><input
+					class="w-[100%]"
+					id="poitrine"
+					name="poitrine"
+					type="text"
+				/>
+			</div>
+		</div>
+
+		<div class="downward-input">
+			<label class="block" for="taille">Taille</label><input
+				name="taille"
+				id="taille"
+				type="text"
+			/>
+		</div>
+		<div class="downward-input">
+			<label class="block" for="longueur-habit">Longueur habit</label><input
+				id="longueur-habit"
+				name="longueur-habit"
+				type="text"
+			/>
+		</div>
+		<div class="downward-input">
+			<label class="block" for="tour-fesses">Tour des fesses</label><input
+				id="tour-fesses"
+				name="ttour-fesses"
+				type="text"
+			/>
+		</div>
+		<div class="downward-input">
+			<label class="block" for="ceinture">Ceinture</label><input
+				id="ceinture"
+				name="ceinture"
+				type="text"
+			/>
+		</div>
+		<div class="input-group">
+			<div id="group-epaule" class="downward-input w-[70%] m-0">
+				<label class="block  w-full overflow-hidden" for="cuisse">Cuisse</label><input
+					class="w-[100%] p-0"
+					id="cuisse"
+					name="cuisse"
+					type="text"
+				/>
+			</div>
+
+			<div class="downward-input w-[30%] m-0">
+				<label class="block" for="pantalon">Pantalon</label><input
+					class="w-[100%]"
+					id="pantalon"
+					name="pantalon"
+					type="text"
+				/>
+			</div>
+		</div>
+	</fieldset>
+</form>
+
+<style>
+	@tailwind components;
+	input {
+		background-color: #FFFFFF;
+		border: 1px solid;
+		border-color: #CCCCCC;
+		border-radius: 8px;
+		height: 32px;
+        width:100%
+        /* width:auto; */
+		/* margin:0; */
+		/* width: fill; */
+	}
+	@layer components {
+		.downward-input {
+			@apply flex-col justify-items-center;
+		}
+		.input-group {
+			@apply flex;
+		}
+		.fieldset-title {
+			@apply text-xl font-semibold;
+		}
+	}
+</style>
