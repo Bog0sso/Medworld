@@ -1,8 +1,8 @@
 <script lang="ts">
 </script>
 
-<form class="mx-auto h-[100%] w-[60%]">
-	<fieldset class="flex-col bg-[#FEEEEE] w-[100%] mx-auto p-[10%]">
+<form class="mx-auto my-[2rem] h-[100%] bg-[#FEEEEE] w-[80%]">
+	<fieldset class="flex-col w-[100%] mx-auto p-[10%]">
 		<h2 class="fieldset-title"> Informations personnelles </h2>
 		<div class="downward-input">
 			<label class="block" for="prenom">Prénom</label>
@@ -25,7 +25,7 @@
 		</div>
 	</fieldset>
 
-	<fieldset class="flex-col bg-[#FEEEEE] w-[100%] mx-auto p-[10%]">
+	<fieldset class="flex-col w-[100%] mx-auto p-[10%]">
 		<h2 class="fieldset-title"> Mesure </h2>
 
 		<div class="input-group">
@@ -115,6 +115,10 @@
 			</div>
 		</div>
 	</fieldset>
+
+	<fieldset class=" w-[100%] mx-auto px-[10%]">
+		<button class=" text-[#FFFFFF] bg-[#222222] h-[3rem] w-[100%] rounded-[.5rem]" >Commander</button>
+	</fieldset>
 </form>
 
 <style>
@@ -124,7 +128,7 @@
 		border: 1px solid;
 		border-color: #CCCCCC;
 		border-radius: 8px;
-		height: 32px;
+		height: 3rem;
         width:100%
         /* width:auto; */
 		/* margin:0; */
