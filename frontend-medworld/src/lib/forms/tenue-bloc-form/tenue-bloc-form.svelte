@@ -1,7 +1,7 @@
 <script lang="ts">
 </script>
 
-<form class="mx-auto my-[2rem] h-[100%] bg-[#FEEEEE] w-[80%]">
+<form class="mx-auto my-[2rem] h-[100%] bg-[#FEEEEE] w-[80%]" method="post">
 	<fieldset class="flex-col w-[100%] mx-auto p-[10%]">
 		<h2 class="fieldset-title"> Informations personnelles </h2>
 		<div class="downward-input">
@@ -15,22 +15,27 @@
 		</div>
 
 		<div class="downward-input">
-			<label class="block" for="couleur">Couleur</label>
-			<input type="text" name="couleur" id="couleur" />
+			<label for="couleur">Couleur</label>
+			<!-- <input class="block" for="couleur"/> -->
+			<!-- <input type="select" name="couleur" id="couleur" /> -->
+			<select class="w-[100%] h-[3rem] rounded-[8px] bg-[#FFFFFF]" name="couleur" id="couleur">
+				<option class="h-[3rem] bg-[#FF2222]" value="rouge">Rouge</option>
+				<option class="h-[3rem] bg-[#2222FF]" value="bleu">Bleu</option>
+			</select>
 		</div>
 
 		<div class="downward-input">
-			<label class="block" for="institution">Institution</label>
+			<label class="block" for="institution">Institution <small>(pour le logo)</small></label>
 			<input type="text" name="institution" id="institution" />
 		</div>
 	</fieldset>
 
 	<fieldset class="flex-col w-[100%] mx-auto p-[10%]">
-		<h2 class="fieldset-title"> Mesure </h2>
+		<h2 class="fieldset-title"> Mesures </h2>
 
 		<div class="input-group">
 			<div id="group-epaule" class="downward-input w-[70%] m-0">
-				<label class="block  w-full overflow-hidden" for="epaule">Epaule</label><input
+				<label class="block  w-full " for="epaule">Epaule</label><input
 					class="w-[100%] p-0"
 					id="epaule"
 					name="epaule"
@@ -49,7 +54,7 @@
 
 		<div class="input-group">
 			<div id="group-epaule" class="downward-input w-[70%] m-0">
-				<label class="block  w-full overflow-hidden" for="epaule">Epaule</label><input
+				<label class="block  w-full" for="epaule">Manche</label><input
 					class="w-[100%] p-0"
 					id="epaule"
 					name="epaule"
@@ -58,7 +63,7 @@
 			</div>
 
 			<div id="group-poitrine" class="downward-input w-[30%] m-0">
-				<label class="block" for="poitrine">Poitrine</label><input
+				<label class="block" for="poitrine">Tour de manche</label><input
 					class="w-[100%]"
 					id="poitrine"
 					name="poitrine"
@@ -97,7 +102,7 @@
 		</div>
 		<div class="input-group">
 			<div id="group-epaule" class="downward-input w-[70%] m-0">
-				<label class="block  w-full overflow-hidden" for="cuisse">Cuisse</label><input
+				<label class="block  w-full" for="cuisse">Cuisse</label><input
 					class="w-[100%] p-0"
 					id="cuisse"
 					name="cuisse"
@@ -106,7 +111,7 @@
 			</div>
 
 			<div class="downward-input w-[30%] m-0">
-				<label class="block" for="pantalon">Pantalon</label><input
+				<label class="block" for="pantalon">Longueur pantalon</label><input
 					class="w-[100%]"
 					id="pantalon"
 					name="pantalon"
