@@ -8,8 +8,8 @@ import Outfit from "$lib/outfit/outfit.svelte";
     </h1>
     <h2>Veuillez choisir votre tenue</h2>
     <div class="flex flex-wrap justify-center w-4/5 my-auto mx-auto rounded-3xl">
-        <Outfit outfitLabel="Tenue de bloc" imageURL="/ressources/blouse.png"/>
-        <Outfit outfitLabel="Blouse" imageURL="/ressources/blouse.png"/>
+        <Outfit link="/commande-tenue-bloc" outfitLabel="Tenue de bloc" imageURL="/ressources/blouse.png" />
+        <Outfit link="/commande-tenue-bloc" outfitLabel="Blouse" imageURL="/ressources/blouse.png"/>
     </div>
 </div>
 
