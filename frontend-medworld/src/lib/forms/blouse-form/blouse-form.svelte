@@ -65,11 +65,9 @@
 
 			<div class="downward-input">
 				<label for="couleur">Couleur</label>
-				<!-- <input class="input-standard" class="block" for="couleur"/> -->
-				<!-- <input class="input-standard" type="select" name="couleur" id="couleur" /> -->
 				<select class="block input-standard" name="couleur" id="couleur">
-					<option class="h-[3rem] bg-[#FF2222]" value="rouge">Rouge</option>
-					<option class="h-[3rem] bg-[#2222FF]" value="bleu">Bleu</option>
+					<option class="" value="rouge">Rouge</option>
+					<option class="" value="bleu">Bleu</option>
 				</select>
 			</div>
 
