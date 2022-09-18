@@ -2,6 +2,9 @@
 </script>
 
 <form class="mx-auto my-[2rem] h-[100%] bg-[#FEEEEE] w-[80%]" method="post">
+	<h1 class="w-full pt-[2rem] font-bold uppercase text-3xl text-center">
+		Commande d'une tenue de bloc
+	</h1>
 	<fieldset class="flex-col w-[100%] mx-auto p-[10%]">
 		<h2 class="fieldset-title"> Informations personnelles </h2>
 		<div class="downward-input">
