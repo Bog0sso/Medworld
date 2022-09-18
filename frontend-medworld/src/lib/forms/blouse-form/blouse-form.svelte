@@ -1,61 +1,80 @@
 <script lang="ts">
 </script>
 
-<form class="mx-auto my-[2rem] h-[100%] bg-[#FEEEEE] w-[80%] p-[2%]" method="post">
-	<h1 class="w-full font-bold uppercase text-3xl text-center">
-		Commande d'une blouse médicale
-	</h1>
-	<div class="flex">
-	<fieldset class="flex-col w-[100%] mx-auto p-[10%]">
-		<h2 class="fieldset-title">Informations personnelles</h2>
-		<div class="downward-input">
-			<label class="block" for="prenom">Prénom</label>
-			<input class="input-standard input-standard" type="text" name="prenom" id="prenom"/>
-		</div>
+<form class="m-[2%] h-[100%] bg-[#FEEEEE] p-[1rem]" method="post">
+	<h1 class="w-full font-bold uppercase text-3xl text-center">Commande d'une blouse médicale</h1>
 
-		<div class="downward-input">
-			<label class="block" for="nom">Nom</label>
-			<input class="input-standard" type="text" name="nom" id="nom" />
-		</div>
+	<div class="form-content gap-[1rem] w-[90%] flex flex-wrap my-[4%] mx-auto justify-center">
+		<fieldset class="flex-col p-[1rem]">
+			<h2 class="fieldset-title">Informations personnelles</h2>
+			<div class="downward-input">
+				<label class="block" for="prenom">Prénom</label>
+				<input class="input-standard" type="text" name="prenom" id="prenom" />
+			</div>
 
-		<div class="downward-input">
-			<label class="block" for="telephone">Téléphone</label>
-			<input class="input-standard" inputmode="numeric" pattern="\d*" minlength="9" max="9" type="tel" id="telephone" />
-		</div>
+			<div class="downward-input">
+				<label class="block" for="nom">Nom</label>
+				<input class="input-standard" type="text" name="nom" id="nom" />
+			</div>
 
-		<div class="downward-input">
-			<label class="block" for="institution">Institution <small>(pour le logo)</small></label>
-			<input class="input-standard" type="text" name="institution" id="institution" />
-		</div>
-	</fieldset>
+			<div class="downward-input">
+				<label class="block" for="telephone">Téléphone</label>
+				<input
+					class="input-standard"
+					inputmode="numeric"
+					pattern="\d*"
+					minlength="9"
+					max="9"
+					type="tel"
+					id="telephone"
+				/>
+			</div>
 
-	<fieldset class="flex-col w-[100%] mx-auto p-[10%]">
-		<h2 class="fieldset-title">Informations tenue<small>(mesures en cm)</small></h2>
+			<div class="downward-input">
+				<label class="block" for="institution">Institution <small>(pour le logo)</small></label>
+				<input class="input-standard" type="text" name="institution" id="institution" />
+			</div>
+		</fieldset>
 
-		<div class="downward-input">
-			<label class="block" for="prenom">Epaule</label>
-			<input class="input-standard" inputmode="numeric" pattern="\d*"  type="text" name="prenom" id="prenom" />
-		</div>
+		<fieldset class="flex-col p-[1rem]">
+			<h2 class="fieldset-title">Informations tenue<small>(mesures en cm)</small></h2>
 
-		<div class="downward-input">
-			<label class="block" for="longueur-habit">Longueur habit</label>
-			<input class="input-standard" inputmode="numeric" pattern="\d*"  type="text" name="longueur-habit" id="longueur-habit" />
-		</div>
+			<div class="downward-input">
+				<label class="block" for="prenom">Epaule</label>
+				<input
+					class="input-standard"
+					inputmode="numeric"
+					pattern="\d*"
+					type="text"
+					name="prenom"
+					id="prenom"
+				/>
+			</div>
 
-		<div class="downward-input">
-			<label for="couleur">Couleur</label>
-			<!-- <input class="input-standard" class="block" for="couleur"/> -->
-			<!-- <input class="input-standard" type="select" name="couleur" id="couleur" /> -->
-			<select class="block input-standard" name="couleur" id="couleur">
-				<option class="h-[3rem] bg-[#FF2222]" value="rouge">Rouge</option>
-				<option class="h-[3rem] bg-[#2222FF]" value="bleu">Bleu</option>
-			</select>
-		</div>
+			<div class="downward-input">
+				<label class="block" for="longueur-habit">Longueur habit</label>
+				<input
+					class="input-standard"
+					inputmode="numeric"
+					pattern="\d*"
+					type="text"
+					name="longueur-habit"
+					id="longueur-habit"
+				/>
+			</div>
 
-		
+			<div class="downward-input">
+				<label for="couleur">Couleur</label>
+				<!-- <input class="input-standard" class="block" for="couleur"/> -->
+				<!-- <input class="input-standard" type="select" name="couleur" id="couleur" /> -->
+				<select class="block input-standard" name="couleur" id="couleur">
+					<option class="h-[3rem] bg-[#FF2222]" value="rouge">Rouge</option>
+					<option class="h-[3rem] bg-[#2222FF]" value="bleu">Bleu</option>
+				</select>
+			</div>
 
-		<!-- Place form radio button inputs -->
-		<!-- <div class="my-[2rem]">
+			<!-- Place form radio button inputs -->
+			<!-- <div class="my-[2rem]">
 			<h3 class="w-full pt-[2rem] font-bold uppercase text-1xl text-left">Manches</h3>
 			<div class="downward-input">
 				<label for="contactChoice1">Manches longues</label>
@@ -79,11 +98,9 @@
 				/>
 			</div>
 		</div> -->
-
-			
-	</fieldset>
+		</fieldset>
 	</div>
-	<fieldset class=" w-[100%] mx-auto px-[10%]">
+	<fieldset class="input-standard max-w-[300px] mx-auto">
 		<button class=" text-[#FFFFFF] bg-[#222222] h-[3rem] w-[100%] rounded-[.5rem]">Commander</button
 		>
 	</fieldset>
@@ -95,24 +112,28 @@
 		padding: 12px;
 	}
 	.input-standard {
-		background-color: #FFFFFF;
+		background-color: #ffffff;
 		border: 1px solid;
-		border-color: #CCCCCC;
+		border-color: #cccccc;
 		border-radius: 8px;
 		height: 2.8rem;
 		width: 100%;
-		max-width: 420px;
-		min-width: 250px;
+		/* max-width: 420px; */
+		/* min-width: 250px; */
 	}
 	@layer components {
 		.downward-input {
-			@apply flex-col justify-items-center;
+			@apply w-[100%] flex-col justify-items-center;
 		}
-		.input-group {
+		/* .input-group {
 			@apply flex gap-[2rem];
-		}
+		} */
 		.fieldset-title {
 			@apply text-xl font-semibold;
+		}
+
+		.input-standard {
+			@apply w-[100%] sm:w-[100%] lg:min-w-[300px];
 		}
 	}
 </style>
