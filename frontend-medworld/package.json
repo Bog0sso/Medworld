@@ -2,6 +2,7 @@
 	"name": "frontend-medworld",
 	"version": "0.0.1",
 	"scripts": {
+		"prestart": ". ~/.nvm/nvm.sh && nvm use",
 		"dev": "vite dev",
 		"build": "vite build",
 		"package": "svelte-kit package",
@@ -35,7 +36,7 @@
 	},
 	"engines": {
 		"npm":">=8.17.0",
-		"node": ">=16.15.1"
+		"node": ">=16.15.0"
 	},
 	"type": "module"
 }
