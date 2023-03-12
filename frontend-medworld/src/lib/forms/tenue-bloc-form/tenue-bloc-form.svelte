@@ -1,4 +1,5 @@
 <script lang="ts">
+	fetch("local")
 </script>
 
 <form class="m-[1%] h-[100%] bg-[#FEEEEE] p-[1rem]" method="post">
@@ -24,7 +25,7 @@
 		</div>
 
 		<div class="downward-input">
-			<label class="block" for="institution">Institution <small>(pour le logo)</small></label>
+			<label class="block" for="institution">Institution <br> <small> <sup>1</sup> si vous souhaitez mettre un logo</small><br><small> <sup>2</sup> Supplément de 1500XOF à prévoir</small></label>
 			<input type="text" name="institution" id="institution" required />
 		</div>
 	</fieldset>

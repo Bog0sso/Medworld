@@ -60,7 +60,7 @@
 					pattern="\d*"
 					type="number"
 					bind:value={epaule}
-					id="prenom"
+					id="epaule"
 				/>
 			</div>
 
@@ -112,8 +112,7 @@
 		</fieldset>
 	</div>
 	<fieldset class="input-standard max-w-[300px] mx-auto">
-		<button class=" text-[#FFFFFF] bg-[#222222] h-[3rem] w-[100%] rounded-[.5rem]">Commander</button
-		>
+		<input type="submit" class=" text-[#FFFFFF] bg-[#222222] h-[3rem] w-[100%] rounded-[.5rem]" value="Commander" />
 	</fieldset>
 </form>
 
