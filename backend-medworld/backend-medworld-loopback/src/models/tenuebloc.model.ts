@@ -1,18 +1,12 @@
-import {Model, model, property} from '@loopback/repository';
+import {Entity, model, property} from '@loopback/repository';
 
 @model()
-export class Blouse extends Model {
+export class Tenuebloc extends Entity {
   @property({
     type: 'string',
     required: true,
   })
-  couleur: string;
-
-  @property({
-    type: 'boolean',
-    required: true,
-  })
-  avecBordure: boolean;
+  type: string;
 
   @property({
     type: 'string',
@@ -34,15 +28,15 @@ export class Blouse extends Model {
 
   @property({
     type: 'string',
-    default: '-',
-  })
-  couleurBouton?: string;
-
-  @property({
-    type: 'string',
     required: true,
   })
-  logo: string;
+  couleur: string;
+
+  @property({
+    type: 'boolean',
+    required: true,
+  })
+  logo: boolean;
 
   @property({
     type: 'number',
@@ -78,7 +72,13 @@ export class Blouse extends Model {
     type: 'number',
     required: true,
   })
-  longueurBlouse: number;
+  longueurHabit: number;
+
+  @property({
+    type: 'number',
+    required: true,
+  })
+  ceinture: number;
 
   @property({
     type: 'number',
@@ -87,20 +87,44 @@ export class Blouse extends Model {
   tourFesse: number;
 
   @property({
+    type: 'number',
+    required: true,
+  })
+  cuisse: number;
+
+  @property({
+    type: 'number',
+    required: true,
+  })
+  longueurPantalon: number;
+
+  @property({
+    type: 'boolean',
+    required: true,
+  })
+  bordure: boolean;
+
+  @property({
+    type: 'string',
+    required: true,
+  })
+  couleurBordure: string;
+
+  @property({
     type: 'string',
     id: true,
-    generated: true,
+    defaultFn: 'uuidv4'
   })
-  identifiant?: string;
+  identifiantTenue?: string;
 
 
-  constructor(data?: Partial<Blouse>) {
+  constructor(data?: Partial<Tenuebloc>) {
     super(data);
   }
 }
 
-export interface BlouseRelations {
+export interface TenueblocRelations {
   // describe navigational properties here
 }
 
-export type BlouseWithRelations = Blouse & BlouseRelations;
+export type TenueblocWithRelations = Tenuebloc & TenueblocRelations;
