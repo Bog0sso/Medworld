@@ -1,5 +1,4 @@
 <script lang="ts">
-	fetch("local")
 </script>
 
 <form class="m-[1%] h-[100%] bg-[#FEEEEE] p-[1rem]" method="post">
