@@ -1,20 +1,27 @@
 <script lang="ts">
-	const BACKEND_BLOUSE_URL = 'http://localhost:3000/'
+	const BACKEND_BLOUSE_URL = 'http://localhost:3000/blouses'
 	// let prenom: number;
 	// let nom: number;
 	// let telephone: number;
 	// let institution: number;
 	// let epaule: number;
-	// let longueurHabit: number;
+	// let longueurblouse: number;
 	// let couleur: string;
 	let formData = {
-		prenom:'',
-		nom:'',
-		telephone:'',
-		institution:'',
-		epaule:'',
-		longueurHabit:'',
-		couleur:''
+		couleur:'',            // done
+		avecBordure: false,    // done
+		nom: '',               // done
+		prenom: '',            // done
+		sexe: false,            // done
+		couleurBouton: '',     // done
+		logo: '',              // done
+		cou: 0,                // done
+		epaule: 0,             // done
+		poitrine: 0,           // done
+		manche: 0,             // done
+		tourManche: 0,         // done
+		longueurBlouse: 0,     // done
+		tourFesse: 0           // done
 		};
 	function handleOnSubmit(event:Event) {
 		fetch(BACKEND_BLOUSE_URL, {
@@ -23,16 +30,30 @@
 				'Content-Type':'application/json'
 			},
 			body: JSON.stringify(formData)
-		})	
+		})
+		console.log(formData);	
 	}
 </script>
 
-<form class="m-[2%] h-[100%] bg-[#FEEEEE] p-[1rem]"  on:submit|preventDefault={ handleOnSubmit } method="POST">
+<form
+	class="m-[2%] h-[100%] bg-[#FEEEEE] p-[1rem]"
+	on:submit|preventDefault={handleOnSubmit}
+	method="POST"
+>
 	<h1 class="w-full font-bold uppercase text-3xl text-center">Commande d'une blouse médicale</h1>
 
 	<div class="form-content gap-[1rem] w-[90%] flex flex-wrap my-[4%] mx-auto justify-center">
 		<fieldset class="flex-col p-[1rem]">
 			<h2 class="fieldset-title">Informations personnelles</h2>
+			
+			<div class="downward-input">
+				<label for="sexe">sexe</label>
+				<select class="block input-standard" bind:value={formData.sexe} id="sexe">
+					<option class="" value="true" > Homme </option>
+					<option class="" value="false"> Femme </option>
+				</select>
+			</div>
+
 			<div class="downward-input">
 				<label class="block" for="prenom">Prénom</label>
 				<input class="input-standard" type="text" bind:value={formData.prenom} id="prenom" />
@@ -43,7 +64,7 @@
 				<input class="input-standard" type="text" bind:value={formData.nom} id="nom" />
 			</div>
 
-			<div class="downward-input">
+			<!-- <div class="downward-input">
 				<label class="block" for="telephone">Téléphone</label>
 				<input
 					class="input-standard"
@@ -55,11 +76,16 @@
 					bind:value={formData.telephone}
 					id="telephone"
 				/>
-			</div>
+			</div> -->
 
 			<div class="downward-input">
-				<label class="block" for="institution">Institution <small>(pour le logo)</small></label>
-				<input class="input-standard" type="text" bind:value={formData.institution} id="institution" />
+				<label class="block" for="logo">Logo</label>
+				<input
+					class="input-standard"
+					type="text"
+					bind:value={formData.logo}
+					id="logo"
+				/>
 			</div>
 		</fieldset>
 
@@ -77,16 +103,71 @@
 					id="epaule"
 				/>
 			</div>
-
 			<div class="downward-input">
-				<label class="block" for="longueur-habit">Longueur habit</label>
+				<label class="block" for="cou">Cou</label>
 				<input
 					class="input-standard"
 					inputmode="numeric"
 					pattern="\d*"
 					type="number"
-					bind:value={formData.longueurHabit}
-					id="longueur-habit"
+					bind:value={formData.cou}
+					id="cou"
+				/>
+			</div>
+			<div class="downward-input">
+				<label class="block" for="poitrine">Poitrine</label>
+				<input
+					class="input-standard"
+					inputmode="numeric"
+					pattern="\d*"
+					type="number"
+					bind:value={formData.poitrine}
+					id="poitrine"
+				/>
+			</div>
+			<div class="downward-input">
+				<label class="block" for="manche">manche</label>
+				<input
+					class="input-standard"
+					inputmode="numeric"
+					pattern="\d*"
+					type="number"
+					bind:value={formData.manche}
+					id="manche"
+				/>
+			</div>
+			<div class="downward-input">
+				<label class="block" for="tourManche">tourManche</label>
+				<input
+					class="input-standard"
+					inputmode="numeric"
+					pattern="\d*"
+					type="number"
+					bind:value={formData.tourManche}
+					id="tourManche"
+				/>
+			</div>
+			<div class="downward-input">
+				<label class="block" for="tourFesse">tourFesse</label>
+				<input
+					class="input-standard"
+					inputmode="numeric"
+					pattern="\d*"
+					type="number"
+					bind:value={formData.tourFesse}
+					id="tourFesse"
+				/>
+			</div>
+
+			<div class="downward-input">
+				<label class="block" for="longueur-blouse">Longueur blouse</label>
+				<input
+					class="input-standard"
+					inputmode="numeric"
+					pattern="\d*"
+					type="number"
+					bind:value={formData.longueurBlouse}
+					id="longueur-blouse"
 				/>
 			</div>
 
@@ -98,35 +179,26 @@
 				</select>
 			</div>
 
-			<!-- Place form radio button inputs -->
-			<!-- <div class="my-[2rem]">
-			<h3 class="w-full pt-[2rem] font-bold uppercase text-1xl text-left">Manches</h3>
 			<div class="downward-input">
-				<label for="contactChoice1">Manches longues</label>
-				<input
-					class="h-[1rem]"
-					type="radio"
-					id="contactChoice1"
-					bind:value={formData.contact}
-					value="email"
-					checked
-				/>
+				<label for="couleur-bouton">Couleur bouton</label>
+				<select class="block input-standard" bind:value={formData.couleurBouton} id="couleur-bouton">
+					<option class="" value="rouge">Rouge</option>
+					<option class="" value="bleu">Bleu</option>
+					<option class=""  value="Choisissez pour moi">Choisissez pour moi</option>
+				</select>
 			</div>
+
 			<div class="downward-input">
-				<label for="contactChoice1">Manches courtes</label>
-				<input
-					class="h-[1rem]"
-					type="radio"
-					id="contactChoice1"
-					bind:value={formData.contact}
-					value="email"
-				/>
+				<label class="block" for="avecBordure">Bordure</label>
+				<input class="input-standard" type="checkbox" bind:value={formData.avecBordure} id="bordure" />
 			</div>
-		</div> -->
+			
 		</fieldset>
 	</div>
 	<fieldset class="input-standard max-w-[300px] mx-auto">
-		<button type="submit" class="text-[#FFFFFF] bg-[#222222] h-[3rem] w-[100%] rounded-[.5rem]"> Commander </button>
+		<button type="submit" class="text-[#FFFFFF] bg-[#222222] h-[3rem] w-[100%] rounded-[.5rem]">
+			Commander
+		</button>
 	</fieldset>
 </form>
 
