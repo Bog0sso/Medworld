@@ -1,4 +1,6 @@
 <script lang="ts">
+	import Navbar from "$lib/navbar/navbar.svelte";
+
 	const BACKEND_BLOUSE_URL = 'http://localhost:3000/blouses'
 	// let prenom: number;
 	// let nom: number;
@@ -7,6 +9,7 @@
 	// let epaule: number;
 	// let longueurblouse: number;
 	// let couleur: string;
+	let sexe = new Boolean(false);
 	let formData = {
 		couleur:'',            // done
 		avecBordure: false,    // done
@@ -24,6 +27,8 @@
 		tourFesse: 0           // done
 		};
 	function handleOnSubmit(event:Event) {
+		formData.sexe = Boolean(formData.sexe);
+		formData.avecBordure = Boolean(formData.avecBordure);
 		fetch(BACKEND_BLOUSE_URL, {
 			method:'POST',
 			headers: {
@@ -49,8 +54,8 @@
 			<div class="downward-input">
 				<label for="sexe">sexe</label>
 				<select class="block input-standard" bind:value={formData.sexe} id="sexe">
-					<option class="" value="true" > Homme </option>
-					<option class="" value="false"> Femme </option>
+					<option class="" value=true > Homme </option>
+					<option class="" value=false> Femme </option>
 				</select>
 			</div>
 
@@ -190,7 +195,7 @@
 
 			<div class="downward-input">
 				<label class="block" for="avecBordure">Bordure</label>
-				<input class="input-standard" type="checkbox" bind:value={formData.avecBordure} id="bordure" />
+				<input class="input-standard" type="checkbox" bind:checked={formData.avecBordure} id="bordure" />
 			</div>
 			
 		</fieldset>
