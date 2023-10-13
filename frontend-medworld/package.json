@@ -2,6 +2,7 @@
 	"name": "frontend-medworld",
 	"version": "0.0.1",
 	"scripts": {
+		"prestart": ". ~/.nvm/nvm.sh && nvm use",
 		"dev": "vite dev",
 		"build": "vite build",
 		"package": "svelte-kit package",
@@ -19,6 +20,7 @@
 		"@typescript-eslint/eslint-plugin": "^5.27.0",
 		"@typescript-eslint/parser": "^5.27.0",
 		"autoprefixer": "^10.4.8",
+		"cypress": "^12.13.0",
 		"eslint": "^8.16.0",
 		"eslint-config-prettier": "^8.3.0",
 		"eslint-plugin-svelte3": "^4.0.0",
@@ -34,8 +36,11 @@
 		"vite": "^3.0.7"
 	},
 	"engines": {
-		"npm":">=8.17.0",
-		"node": ">=16.15.1"
+		"npm": ">=8.17.0",
+		"node": ">=16.15.0"
 	},
-	"type": "module"
+	"type": "module",
+	"dependencies": {
+		"caniuse-lite": "^1.0.30001486"
+	}
 }

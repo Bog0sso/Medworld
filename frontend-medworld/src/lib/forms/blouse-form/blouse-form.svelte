@@ -1,116 +1,217 @@
 <script lang="ts">
+	import Navbar from "$lib/navbar/navbar.svelte";
+
+	const BACKEND_BLOUSE_URL = 'http://localhost:3000/blouses'
+	// let prenom: number;
+	// let nom: number;
+	// let telephone: number;
+	// let institution: number;
+	// let epaule: number;
+	// let longueurblouse: number;
+	// let couleur: string;
+	let sexe = new Boolean(false);
+	let formData = {
+		couleur:'',            // done
+		avecBordure: false,    // done
+		nom: '',               // done
+		prenom: '',            // done
+		sexe: false,           // done
+		couleurBouton: '',     // done
+		logo: '',              // done
+		cou: 0,                // done
+		epaule: 0,             // done
+		poitrine: 0,           // done
+		manche: 0,             // done
+		tourManche: 0,         // done
+		longueurBlouse: 0,     // done
+		tourFesse: 0           // done
+		};
+	function handleOnSubmit(event:Event) {
+		formData.sexe = Boolean(formData.sexe);
+		formData.avecBordure = Boolean(formData.avecBordure);
+		fetch(BACKEND_BLOUSE_URL, {
+			method:'POST',
+			headers: {
+				'Content-Type':'application/json'
+			},
+			body: JSON.stringify(formData)
+		})
+		console.log(formData);	
+	}
 </script>
 
-<form class="mx-auto my-[2rem] h-[100%] bg-[#FEEEEE] w-[80%]" method="post">
-	<h1 class="w-full pt-[2rem] font-bold uppercase text-3xl text-center">
-		Commande d'une blouse médicale
-	</h1>
-	<fieldset class="flex-col w-[100%] mx-auto p-[10%]">
-		<h2 class="fieldset-title">Informations personnelles</h2>
-		<div class="downward-input">
-			<label class="block" for="prenom">Prénom</label>
-			<input class="input-standard input-standard" type="text" name="prenom" id="prenom" />
-		</div>
+<form
+	class="m-[2%] h-[100%] bg-[#FEEEEE] p-[1rem]"
+	on:submit|preventDefault={handleOnSubmit}
+	method="POST"
+>
+	<h1 class="w-full font-bold uppercase text-3xl text-center">Commande d'une blouse médicale</h1>
 
-		<div class="downward-input">
-			<label class="block" for="nom">Nom</label>
-			<input class="input-standard" type="text" name="nom" id="nom" />
-		</div>
+	<div class="form-content gap-[1rem] w-[90%] flex flex-wrap my-[4%] mx-auto justify-center">
+		<fieldset class="flex-col p-[1rem]">
+			<h2 class="fieldset-title">Informations personnelles</h2>
+			
+			<div class="downward-input">
+				<label for="sexe">sexe</label>
+				<select class="block input-standard" bind:value={formData.sexe} id="sexe">
+					<option class="" value=true > Homme </option>
+					<option class="" value=false> Femme </option>
+				</select>
+			</div>
 
-		<div class="downward-input">
-			<label for="couleur">Couleur</label>
-			<!-- <input class="input-standard" class="block" for="couleur"/> -->
-			<!-- <input class="input-standard" type="select" name="couleur" id="couleur" /> -->
-			<select class="w-[100%] h-[3rem] rounded-[8px] bg-[#FFFFFF]" name="couleur" id="couleur">
-				<option class="h-[3rem] bg-[#FF2222]" value="rouge">Rouge</option>
-				<option class="h-[3rem] bg-[#2222FF]" value="bleu">Bleu</option>
-			</select>
-		</div>
+			<div class="downward-input">
+				<label class="block" for="prenom">Prénom</label>
+				<input class="input-standard" type="text" bind:value={formData.prenom} id="prenom" />
+			</div>
 
-		<div class="downward-input">
-			<label class="block" for="institution">Institution <small>(pour le logo)</small></label>
-			<input class="input-standard" type="text" name="institution" id="institution" />
-		</div>
-	</fieldset>
+			<div class="downward-input">
+				<label class="block" for="nom">Nom</label>
+				<input class="input-standard" type="text" bind:value={formData.nom} id="nom" />
+			</div>
 
-	<fieldset class="flex-col w-[100%] mx-auto p-[10%]">
-		<h2 class="fieldset-title">Mesures</h2>
+			<!-- <div class="downward-input">
+				<label class="block" for="telephone">Téléphone</label>
+				<input
+					class="input-standard"
+					inputmode="numeric"
+					pattern="\d*"
+					minlength="9"
+					max="9"
+					type="tel"
+					bind:value={formData.telephone}
+					id="telephone"
+				/>
+			</div> -->
 
-		<div class="input-group">
-			<div id="group-epaule" class="downward-input w-[70%] m-0">
-				<label class="block  w-full " for="epaule">Epaule</label><input
-					class="input-standard w-[100%] p-0"
+			<div class="downward-input">
+				<label class="block" for="logo">Logo</label>
+				<input
+					class="input-standard"
+					type="text"
+					bind:value={formData.logo}
+					id="logo"
+				/>
+			</div>
+		</fieldset>
+
+		<fieldset class="flex-col p-[1rem]">
+			<h2 class="fieldset-title">Informations tenue<small>(mesures en cm)</small></h2>
+
+			<div class="downward-input">
+				<label class="block" for="prenom">Epaule</label>
+				<input
+					class="input-standard"
+					inputmode="numeric"
+					pattern="\d*"
+					type="number"
+					bind:value={formData.epaule}
 					id="epaule"
-					name="epaule"
-					type="text"
 				/>
 			</div>
-			<div id="group-poitrine" class="downward-input w-[30%] m-0">
-				<label class="block" for="poitrine">Poitrine</label><input
-					class="input-standard w-[100%]"
+			<div class="downward-input">
+				<label class="block" for="cou">Cou</label>
+				<input
+					class="input-standard"
+					inputmode="numeric"
+					pattern="\d*"
+					type="number"
+					bind:value={formData.cou}
+					id="cou"
+				/>
+			</div>
+			<div class="downward-input">
+				<label class="block" for="poitrine">Poitrine</label>
+				<input
+					class="input-standard"
+					inputmode="numeric"
+					pattern="\d*"
+					type="number"
+					bind:value={formData.poitrine}
 					id="poitrine"
-					name="poitrine"
-					type="text"
-				/>
-			</div>
-		</div>
-
-		<!-- Place form radio button inputs -->
-		<div class="">
-			<h3 class="w-full pt-[2rem] font-bold uppercase text-1xl text-left">Manches</h3>
-			<div class="downward-input">
-				<label for="contactChoice1">Manches longues</label>
-				<input
-					class="h-[1rem]"
-					type="radio"
-					id="contactChoice1"
-					name="contact"
-					value="email"
-					checked
 				/>
 			</div>
 			<div class="downward-input">
-				<label for="contactChoice1">Manches courtes</label>
+				<label class="block" for="manche">manche</label>
 				<input
-					class="h-[1rem]"
-					type="radio"
-					id="contactChoice1"
-					name="contact"
-					value="email"
-					checked
+					class="input-standard"
+					inputmode="numeric"
+					pattern="\d*"
+					type="number"
+					bind:value={formData.manche}
+					id="manche"
 				/>
 			</div>
-		</div>
-
-		<div class="input-group">
-			<div id="group-epaule" class="downward-input w-[70%] m-0">
-				<label class="block  w-full" for="tour-manche">Tour de manche</label><input
-					class="input-standard w-[100%] p-0"
-					id="tour-manche"
-					name="tour-manche"
-					type="text"
+			<div class="downward-input">
+				<label class="block" for="tourManche">tourManche</label>
+				<input
+					class="input-standard"
+					inputmode="numeric"
+					pattern="\d*"
+					type="number"
+					bind:value={formData.tourManche}
+					id="tourManche"
+				/>
+			</div>
+			<div class="downward-input">
+				<label class="block" for="tourFesse">tourFesse</label>
+				<input
+					class="input-standard"
+					inputmode="numeric"
+					pattern="\d*"
+					type="number"
+					bind:value={formData.tourFesse}
+					id="tourFesse"
 				/>
 			</div>
 
-			<div class="downward-input w-[30%] m-0">
-				<label class="block" for="longueur-habit">Longueur habit</label><input
-					class="input-standard w-[100%]"
-					id="longueur-habit"
-					name="longueur-habit"
-					type="text"
+			<div class="downward-input">
+				<label class="block" for="longueur-blouse">Longueur blouse</label>
+				<input
+					class="input-standard"
+					inputmode="numeric"
+					pattern="\d*"
+					type="number"
+					bind:value={formData.longueurBlouse}
+					id="longueur-blouse"
 				/>
 			</div>
-		</div>
-	</fieldset>
 
-	<fieldset class=" w-[100%] mx-auto px-[10%]">
-		<button class=" text-[#FFFFFF] bg-[#222222] h-[3rem] w-[100%] rounded-[.5rem]">Commander</button
-		>
+			<div class="downward-input">
+				<label for="couleur">Couleur</label>
+				<select class="block input-standard" bind:value={formData.couleur} id="couleur">
+					<option class="" value="rouge">Rouge</option>
+					<option class="" value="bleu">Bleu</option>
+				</select>
+			</div>
+
+			<div class="downward-input">
+				<label for="couleur-bouton">Couleur bouton</label>
+				<select class="block input-standard" bind:value={formData.couleurBouton} id="couleur-bouton">
+					<option class="" value="rouge">Rouge</option>
+					<option class="" value="bleu">Bleu</option>
+					<option class=""  value="Choisissez pour moi">Choisissez pour moi</option>
+				</select>
+			</div>
+
+			<div class="downward-input">
+				<label class="block" for="avecBordure">Bordure</label>
+				<input class="input-standard" type="checkbox" bind:checked={formData.avecBordure} id="bordure" />
+			</div>
+			
+		</fieldset>
+	</div>
+	<fieldset class="input-standard max-w-[300px] mx-auto">
+		<button type="submit" class="text-[#FFFFFF] bg-[#222222] h-[3rem] w-[100%] rounded-[.5rem]">
+			Commander
+		</button>
 	</fieldset>
 </form>
 
 <style>
 	@tailwind components;
+	input {
+		padding: 12px;
+	}
 	.input-standard {
 		background-color: #ffffff;
 		border: 1px solid;
@@ -118,19 +219,22 @@
 		border-radius: 8px;
 		height: 2.8rem;
 		width: 100%;
-		/* width:auto; */
-		/* margin:0; */
-		/* width: fill; */
+		/* max-width: 420px; */
+		/* min-width: 250px; */
 	}
 	@layer components {
 		.downward-input {
-			@apply flex-col justify-items-center;
+			@apply w-[100%] flex-col justify-items-center;
 		}
-		.input-group {
-			@apply flex;
-		}
+		/* .input-group {
+			@apply flex gap-[2rem];
+		} */
 		.fieldset-title {
 			@apply text-xl font-semibold;
+		}
+
+		.input-standard {
+			@apply w-[100%] sm:w-[100%] lg:min-w-[300px];
 		}
 	}
 </style>

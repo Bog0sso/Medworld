@@ -1,0 +1,17 @@
+{
+  "couleur": "string",
+  "avecBordure": true,
+  "nom": "string",
+  "prenom": "string",
+  "sexe": true,
+  "couleurBouton": "string",
+  "logo": "string",
+  "cou": 0,
+  "epaule": 0,
+  "poitrine": 0,
+  "manche": 0,
+  "tourManche": 0,
+  "longueurBlouse": 0,
+  "tourFesse": 0
+}
+

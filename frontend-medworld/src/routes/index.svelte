@@ -6,6 +6,6 @@ import Navbar from "$lib/navbar/navbar.svelte";
 </script>
 
 <Navbar/>
-<TenueBlocForm />
+<OutfitWrapper/>
+<!-- <TenueBlocForm /> -->
 <!-- <BlouseForm/> -->
-<!-- <OutfitWrapper/> -->
