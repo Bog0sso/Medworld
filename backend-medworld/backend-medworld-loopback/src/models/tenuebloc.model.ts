@@ -2,11 +2,11 @@ import {Entity, model, property} from '@loopback/repository';
 
 @model()
 export class Tenuebloc extends Entity {
-  @property({
-    type: 'string',
-    required: true,
-  })
-  type: string;
+  // @property({
+  //   type: 'string',
+  //   required: true,
+  // })
+  // type: string;
 
   @property({
     type: 'string',

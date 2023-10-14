@@ -2,13 +2,7 @@
 	import Navbar from "$lib/navbar/navbar.svelte";
 
 	const BACKEND_BLOUSE_URL = 'http://localhost:3000/blouses'
-	// let prenom: number;
-	// let nom: number;
-	// let telephone: number;
-	// let institution: number;
-	// let epaule: number;
-	// let longueurblouse: number;
-	// let couleur: string;
+
 	let sexe = new Boolean(false);
 	let formData = {
 		couleur:'',            // done
@@ -25,7 +19,7 @@
 		tourManche: 0,         // done
 		longueurBlouse: 0,     // done
 		tourFesse: 0           // done
-		};
+	};
 	function handleOnSubmit(event:Event) {
 		formData.sexe = Boolean(formData.sexe);
 		formData.avecBordure = Boolean(formData.avecBordure);
