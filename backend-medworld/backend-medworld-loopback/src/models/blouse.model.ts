@@ -10,14 +10,14 @@ export class Blouse extends Entity {
     required: true,
     generated: true
   })
-  couleur: string;
+  modele: string;
 
   @property({
-    type: 'boolean',
+    type: 'string',
     required: true,
     generated: true
   })
-  avecBordure: boolean;
+  couleur: string;
 
   @property({
     type: 'string',
@@ -42,10 +42,17 @@ export class Blouse extends Entity {
 
   @property({
     type: 'string',
+    required: true,
+    generated: true
+  })
+  telephone: string;
+
+  @property({
+    type: 'string',
     default: '-',
     generated: true
   })
-  couleurBouton?: string;
+  couleurBordure?: string;
 
   @property({
     type: 'string',

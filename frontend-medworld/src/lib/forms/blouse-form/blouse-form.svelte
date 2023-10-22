@@ -3,14 +3,15 @@
 
 	const BACKEND_BLOUSE_URL = 'http://localhost:3000/blouses'
 
-	let sexe = new Boolean(false);
 	let formData = {
+		modele: '',
 		couleur:'',            // done
 		avecBordure: false,    // done
 		nom: '',               // done
 		prenom: '',            // done
+		telephone: '',
 		sexe: false,           // done
-		couleurBouton: '',     // done
+		couleurBordure: '',     // done
 		logo: '',              // done
 		cou: 0,                // done
 		epaule: 0,             // done
@@ -22,7 +23,6 @@
 	};
 	function handleOnSubmit(event:Event) {
 		formData.sexe = Boolean(formData.sexe);
-		formData.avecBordure = Boolean(formData.avecBordure);
 		fetch(BACKEND_BLOUSE_URL, {
 			method:'POST',
 			headers: {
@@ -41,17 +41,10 @@
 >
 	<h1 class="w-full font-bold uppercase text-3xl text-center">Commande d'une blouse médicale</h1>
 
-	<div class="form-content gap-[1rem] w-[90%] flex flex-wrap my-[4%] mx-auto justify-center">
-		<fieldset class="flex-col p-[1rem]">
+	<div class="form-content gap-[1rem] w-[90%] flex flex-col my-[4rem] mx-auto justify-center">
+		<fieldset class="max-w-[800px] fieldset-standard flex-col w-[100%] mx-auto p-[1%]">
 			<h2 class="fieldset-title">Informations personnelles</h2>
 			
-			<div class="downward-input">
-				<label for="sexe">sexe</label>
-				<select class="block input-standard" bind:value={formData.sexe} id="sexe">
-					<option class="" value=true > Homme </option>
-					<option class="" value=false> Femme </option>
-				</select>
-			</div>
 
 			<div class="downward-input">
 				<label class="block" for="prenom">Prénom</label>
@@ -63,22 +56,21 @@
 				<input class="input-standard" type="text" bind:value={formData.nom} id="nom" />
 			</div>
 
-			<!-- <div class="downward-input">
-				<label class="block" for="telephone">Téléphone</label>
-				<input
-					class="input-standard"
-					inputmode="numeric"
-					pattern="\d*"
-					minlength="9"
-					max="9"
-					type="tel"
-					bind:value={formData.telephone}
-					id="telephone"
-				/>
-			</div> -->
+			<div class="downward-input">
+				<label for="sexe">Sexe</label>
+				<select class="block input-standard" bind:value={formData.sexe} id="sexe">
+					<option class="" value=true > Homme </option>
+					<option class="" value=false> Femme </option>
+				</select>
+			</div>
 
 			<div class="downward-input">
-				<label class="block" for="logo">Logo</label>
+				<label class="block" for="telephone">Téléphone</label>
+				<input class="input-standard" type="text" bind:value={formData.telephone} id="telephone" />
+			</div>
+
+			<div class="downward-input">
+				<label class="block" for="logo">Logo <sup>(1)</sup></label>
 				<input
 					class="input-standard"
 					type="text"
@@ -88,8 +80,17 @@
 			</div>
 		</fieldset>
 
-		<fieldset class="flex-col p-[1rem]">
-			<h2 class="fieldset-title">Informations tenue<small>(mesures en cm)</small></h2>
+		<fieldset class="max-w-[800px] fieldset-standard flex-col w-[100%] mx-auto p-[1%]">
+			<h2 class="fieldset-title">Informations tenue</h2>
+			<small>Toutes les mesures sont en centimètre</small>
+			<div class="downward-input">
+				<label for="modele"> Modèle tenue</label>
+				<select class="block input-standard" bind:value={formData.modele} id="modele">
+					<option class="" value="Classic">Classic</option>
+					<option class="" value="Bordered">Borduré</option>
+					<option class=""  value="DeuxTons">Deux tons</option>
+				</select>
+			</div>
 
 			<div class="downward-input">
 				<label class="block" for="prenom">Epaule</label>
@@ -125,7 +126,7 @@
 				/>
 			</div>
 			<div class="downward-input">
-				<label class="block" for="manche">manche</label>
+				<label class="block" for="manche">Manche</label>
 				<input
 					class="input-standard"
 					inputmode="numeric"
@@ -136,7 +137,7 @@
 				/>
 			</div>
 			<div class="downward-input">
-				<label class="block" for="tourManche">tourManche</label>
+				<label class="block" for="tourManche">Tour de manche</label>
 				<input
 					class="input-standard"
 					inputmode="numeric"
@@ -147,7 +148,7 @@
 				/>
 			</div>
 			<div class="downward-input">
-				<label class="block" for="tourFesse">tourFesse</label>
+				<label class="block" for="tourFesse">Tour des fesses</label>
 				<input
 					class="input-standard"
 					inputmode="numeric"
@@ -171,7 +172,7 @@
 			</div>
 
 			<div class="downward-input">
-				<label for="couleur">Couleur</label>
+				<label for="couleur">Couleur tenue</label>
 				<select class="block input-standard" bind:value={formData.couleur} id="couleur">
 					<option class="" value="rouge">Rouge</option>
 					<option class="" value="bleu">Bleu</option>
@@ -179,17 +180,12 @@
 			</div>
 
 			<div class="downward-input">
-				<label for="couleur-bouton">Couleur bouton</label>
-				<select class="block input-standard" bind:value={formData.couleurBouton} id="couleur-bouton">
+				<label for="couleur-bordure">Couleur bordure</label>
+				<select class="block input-standard" bind:value={formData.couleurBordure} id="couleur-bordure">
 					<option class="" value="rouge">Rouge</option>
 					<option class="" value="bleu">Bleu</option>
 					<option class=""  value="Choisissez pour moi">Choisissez pour moi</option>
 				</select>
-			</div>
-
-			<div class="downward-input">
-				<label class="block" for="avecBordure">Bordure</label>
-				<input class="input-standard" type="checkbox" bind:checked={formData.avecBordure} id="bordure" />
 			</div>
 			
 		</fieldset>

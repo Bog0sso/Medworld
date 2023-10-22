@@ -46,7 +46,7 @@
 	method="POST"
 >
 	<h1 class="w-full font-bold uppercase text-3xl text-center">Commande d'une tenue de bloc</h1>
-	<div class="form-content gap-[1rem] w-[90%] flex flex-wrap my-[4rem] mx-auto justify-center">
+	<div class="form-content gap-[1rem] w-[90%] flex flex-col my-[4rem] mx-auto justify-center">
 		<fieldset class="max-w-[800px] fieldset-standard flex-col w-[100%] mx-auto p-[1%]">
 			<h2 class="fieldset-title">Informations personnelles</h2>
 			<div class="downward-input">
@@ -75,31 +75,6 @@
 					<option class="" value=false> Sans logo</option>
 				</select>
 			</div>
-
-			<!-- <div class="downward-input">
-				<label class="block" for="telephone">Téléphone</label>
-				<input
-					type="text"
-					name="telephone"
-					id="telephone"
-					bind:value={formData.telephone}
-					required
-				/>
-			</div> -->
-
-			<!-- <div class="downward-input">
-				<label class="block" for="institution"
-					>Institution <br /> <small> <sup>1</sup> si vous souhaitez mettre un logo</small><br
-					/><small> <sup>2</sup> Supplément de 1500XOF à prévoir</small></label
-				>
-				<input
-					type="text"
-					name="institution"
-					id="institution"
-					bind:value={formData.institution}
-					required
-				/>
-			</div> -->
 		</fieldset>
 
 		<fieldset class="max-w-[800px] fieldset-standard flex-col w-[100%] mx-auto p-[1%]">
