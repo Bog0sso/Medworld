@@ -81,10 +81,10 @@
 		</fieldset>
 
 		<fieldset class="max-w-[800px] fieldset-standard flex-col w-[100%] mx-auto p-[1%]">
-			<h2 class="fieldset-title">Informations tenue</h2>
+			<h2 class="fieldset-title">Informations blouse</h2>
 			<small>Toutes les mesures sont en centimètre</small>
 			<div class="downward-input">
-				<label for="modele"> Modèle tenue</label>
+				<label for="modele"> Modèle bouse</label>
 				<select class="block input-standard" bind:value={formData.modele} id="modele">
 					<option class="" value="Classic">Classic</option>
 					<option class="" value="Bordered">Borduré</option>
@@ -172,7 +172,7 @@
 			</div>
 
 			<div class="downward-input">
-				<label for="couleur">Couleur tenue</label>
+				<label for="couleur">Couleur blouse</label>
 				<select class="block input-standard" bind:value={formData.couleur} id="couleur">
 					<option class="" value="rouge">Rouge</option>
 					<option class="" value="bleu">Bleu</option>
@@ -200,7 +200,7 @@
 <style>
 	@tailwind components;
 	input {
-		padding: 12px;
+		padding: 1rem;
 	}
 	.input-standard {
 		background-color: #ffffff;
@@ -208,7 +208,7 @@
 		border-color: #cccccc;
 		border-radius: 8px;
 		height: 2.8rem;
-		width: 100%;
+		width: 90%;
 		/* max-width: 420px; */
 		/* min-width: 250px; */
 	}
