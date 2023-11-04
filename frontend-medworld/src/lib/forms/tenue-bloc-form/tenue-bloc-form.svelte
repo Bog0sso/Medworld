@@ -1,5 +1,4 @@
 <script lang="ts">
-
 	const BACKEND_TENUE_BLOC_URL = 'http://localhost:3000/tenueblocs';
 
 	let sexe = new Boolean(false);
@@ -22,19 +21,17 @@
 		couleurBordure: ''
 	};
 
-	function handleOnSubmit(event:Event) {
+	function handleOnSubmit(event: Event) {
 		formData.sexe = Boolean(formData.sexe);
 		fetch(BACKEND_TENUE_BLOC_URL, {
-			method:'POST',
+			method: 'POST',
 			headers: {
-				'Content-Type':'application/json'
+				'Content-Type': 'application/json'
 			},
 			body: JSON.stringify(formData)
-		})
-		console.log(formData);	
+		});
+		console.log(formData);
 	}
-
-
 </script>
 
 <form
@@ -58,21 +55,19 @@
 
 			<div class="downward-input">
 				<label for="sexe">Sexe</label>
-				<select class="w-[100%] h-[3rem] rounded-[8px] bg-[#FFFFFF]" bind:value={formData.sexe} id="sexe">
-					<option class="" value=true > Homme </option>
-					<option class="" value=false> Femme </option>
+				<select
+					class="w-[100%] h-[3rem] rounded-[8px] bg-[#FFFFFF]"
+					bind:value={formData.sexe}
+					id="sexe"
+				>
+					<option class="" value="true"> Homme </option>
+					<option class="" value="false"> Femme </option>
 				</select>
 			</div>
 
-
 			<div class="downward-input">
 				<label class="block" for="logo">Logo <sup>(1)</sup></label>
-				<input
-					class="input-standard"
-					type="text"
-					bind:value={formData.logo}
-					id="logo"
-				/>
+				<input class="input-standard" type="text" bind:value={formData.logo} id="logo" />
 			</div>
 		</fieldset>
 
@@ -88,6 +83,7 @@
 						inputmode="numeric"
 						pattern="\d*"
 						type="number"
+						min="1"
 						bind:value={formData.epaule}
 						required
 					/>
@@ -100,6 +96,7 @@
 						inputmode="numeric"
 						pattern="\d*"
 						type="number"
+						min="1"
 						bind:value={formData.poitrine}
 						required
 					/>
@@ -112,6 +109,7 @@
 						inputmode="numeric"
 						pattern="\d*"
 						type="number"
+						min="1"
 						bind:value={formData.cou}
 						required
 					/>
@@ -124,7 +122,6 @@
 					<input class="input-standard" type="checkbox" bind:checked={formData.bordure} id="bordure" />
 				</div> -->
 
-
 				<div class="downward-input w-[50%] m-0">
 					<label class="block  w-full" for="manche">Manche</label><input
 						class="w-[100%] p-0"
@@ -133,6 +130,7 @@
 						inputmode="numeric"
 						pattern="\d*"
 						type="number"
+						min="1"
 						bind:value={formData.manche}
 						required
 					/>
@@ -146,6 +144,7 @@
 						inputmode="numeric"
 						pattern="\d*"
 						type="number"
+						min="1"
 						bind:value={formData.tourManche}
 						required
 					/>
@@ -169,6 +168,7 @@
 					inputmode="numeric"
 					pattern="\d*"
 					type="number"
+					min="1"
 					bind:value={formData.longueurHabit}
 					required
 				/>
@@ -180,6 +180,7 @@
 					inputmode="numeric"
 					pattern="\d*"
 					type="number"
+					min="1"
 					bind:value={formData.tourFesse}
 					required
 				/>
@@ -191,6 +192,7 @@
 					inputmode="numeric"
 					pattern="\d*"
 					type="number"
+					min="1"
 					bind:value={formData.ceinture}
 					required
 				/>
@@ -204,6 +206,7 @@
 						inputmode="numeric"
 						pattern="\d*"
 						type="number"
+						min="1"
 						bind:value={formData.cuisse}
 						required
 					/>
@@ -217,6 +220,7 @@
 						inputmode="numeric"
 						pattern="\d*"
 						type="number"
+						min="1"
 						bind:value={formData.longueurPantalon}
 						required
 					/>
@@ -235,7 +239,7 @@
 				</select>
 			</div>
 			<div class="downward-input">
-				<label for="couleur-bordure">Couleur bordure</label><br/>
+				<label for="couleur-bordure">Couleur bordure</label><br />
 				<small>Remplir seulement si vous avez choisi le <b>modèle borduré</b>.</small>
 				<select
 					class="w-[100%] h-[3rem] rounded-[8px] bg-[#FFFFFF]"

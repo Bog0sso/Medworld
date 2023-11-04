@@ -1,35 +1,35 @@
 <script lang="ts">
-	import Navbar from "$lib/navbar/navbar.svelte";
+	import Navbar from '$lib/navbar/navbar.svelte';
 
-	const BACKEND_BLOUSE_URL = 'http://localhost:3000/blouses'
+	const BACKEND_BLOUSE_URL = 'http://localhost:3000/blouses';
 
 	let formData = {
 		modele: '',
-		couleur:'',            // done
-		nom: '',               // done
-		prenom: '',            // done
+		couleur: '', // done
+		nom: '', // done
+		prenom: '', // done
 		telephone: '',
-		sexe: false,           // done
-		couleurBordure: '',     // done
-		logo: '',              // done
-		cou: 0,                // done
-		epaule: 0,             // done
-		poitrine: 0,           // done
-		manche: 0,             // done
-		tourManche: 0,         // done
-		longueurBlouse: 0,     // done
-		tourFesse: 0           // done
+		sexe: false, // done
+		couleurBordure: '', // done
+		logo: '', // done
+		cou: 0, // done
+		epaule: 0, // done
+		poitrine: 0, // done
+		manche: 0, // done
+		tourManche: 0, // done
+		longueurBlouse: 0, // done
+		tourFesse: 0 // done
 	};
-	function handleOnSubmit(event:Event) {
+	function handleOnSubmit(event: Event) {
 		formData.sexe = Boolean(formData.sexe);
 		fetch(BACKEND_BLOUSE_URL, {
-			method:'POST',
+			method: 'POST',
 			headers: {
-				'Content-Type':'application/json'
+				'Content-Type': 'application/json'
 			},
 			body: JSON.stringify(formData)
-		})
-		console.log(formData);	
+		});
+		console.log(formData);
 	}
 </script>
 
@@ -43,11 +43,16 @@
 	<div class="form-content gap-[1rem] w-[90%] flex flex-col my-[4rem] mx-auto justify-center">
 		<fieldset class="max-w-[800px] fieldset-standard flex-col w-[100%] mx-auto p-[1%]">
 			<h2 class="fieldset-title">Informations personnelles</h2>
-			
 
 			<div class="downward-input">
 				<label class="block" for="prenom">Prénom</label>
-				<input class="input-standard" type="text" bind:value={formData.prenom} id="prenom" data-test="prenom"/>
+				<input
+					class="input-standard"
+					type="text"
+					bind:value={formData.prenom}
+					id="prenom"
+					data-test="prenom"
+				/>
 			</div>
 
 			<div class="downward-input">
@@ -58,29 +63,19 @@
 			<div class="downward-input">
 				<label for="sexe">Sexe</label>
 				<select class="block input-standard" bind:value={formData.sexe} id="sexe">
-					<option class="" value=true > Homme </option>
-					<option class="" value=false> Femme </option>
+					<option class="" value="true"> Homme </option>
+					<option class="" value="false"> Femme </option>
 				</select>
 			</div>
 			<!--  -->
 			<div class="downward-input">
 				<label class="block" for="telephone">Téléphone</label>
-				<input
-					class="input-standard"
-					type="text"
-					bind:value={formData.telephone}
-					id="telephone"
-				/>
+				<input class="input-standard" type="text" bind:value={formData.telephone} id="telephone" />
 			</div>
 			<!--  -->
 			<div class="downward-input">
 				<label class="block" for="logo">Logo <sup>(1)</sup></label>
-				<input
-					class="input-standard"
-					type="text"
-					bind:value={formData.logo}
-					id="logo"
-				/>
+				<input class="input-standard" type="text" bind:value={formData.logo} id="logo" />
 			</div>
 		</fieldset>
 
@@ -92,7 +87,7 @@
 				<select class="block input-standard" bind:value={formData.modele} id="modele">
 					<option class="" value="Classic">Classic</option>
 					<option class="" value="Bordered">Borduré</option>
-					<option class=""  value="DeuxTons">Deux tons</option>
+					<option class="" value="DeuxTons">Deux tons</option>
 				</select>
 			</div>
 
@@ -103,6 +98,7 @@
 					inputmode="numeric"
 					pattern="\d*"
 					type="number"
+					min="1"
 					bind:value={formData.epaule}
 					id="epaule"
 				/>
@@ -114,6 +110,7 @@
 					inputmode="numeric"
 					pattern="\d*"
 					type="number"
+					min="1"
 					bind:value={formData.cou}
 					id="cou"
 				/>
@@ -125,6 +122,7 @@
 					inputmode="numeric"
 					pattern="\d*"
 					type="number"
+					min="1"
 					bind:value={formData.poitrine}
 					id="poitrine"
 				/>
@@ -136,6 +134,7 @@
 					inputmode="numeric"
 					pattern="\d*"
 					type="number"
+					min="1"
 					bind:value={formData.manche}
 					id="manche"
 				/>
@@ -147,6 +146,7 @@
 					inputmode="numeric"
 					pattern="\d*"
 					type="number"
+					min="1"
 					bind:value={formData.tourManche}
 					id="tourManche"
 				/>
@@ -158,6 +158,7 @@
 					inputmode="numeric"
 					pattern="\d*"
 					type="number"
+					min="1"
 					bind:value={formData.tourFesse}
 					id="tourFesse"
 				/>
@@ -170,6 +171,7 @@
 					inputmode="numeric"
 					pattern="\d*"
 					type="number"
+					min="1"
 					bind:value={formData.longueurBlouse}
 					id="longueur-blouse"
 				/>
@@ -184,15 +186,18 @@
 			</div>
 
 			<div class="downward-input">
-				<label for="couleur-bordure">Couleur bordure </label><br/>
-				<small>Remplir seulement si vous avez choisi le <b>modèle borduré</b>.</small> 
-				<select class="block input-standard" bind:value={formData.couleurBordure} id="couleur-bordure">
+				<label for="couleur-bordure">Couleur bordure </label><br />
+				<small>Remplir seulement si vous avez choisi le <b>modèle borduré</b>.</small>
+				<select
+					class="block input-standard"
+					bind:value={formData.couleurBordure}
+					id="couleur-bordure"
+				>
 					<option class="" value="rouge">Rouge</option>
 					<option class="" value="bleu">Bleu</option>
-					<option class=""  value="Choisissez pour moi">Choisissez pour moi</option>
+					<option class="" value="Choisissez pour moi">Choisissez pour moi</option>
 				</select>
 			</div>
-			
 		</fieldset>
 	</div>
 	<fieldset class="input-standard max-w-[300px] mx-auto">
