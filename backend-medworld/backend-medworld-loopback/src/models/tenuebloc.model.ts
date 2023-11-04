@@ -33,10 +33,10 @@ export class Tenuebloc extends Entity {
   couleur: string;
 
   @property({
-    type: 'boolean',
-    required: true,
+    type: 'string',
+    required: false,
   })
-  logo: boolean;
+  logo: string;
 
   @property({
     type: 'number',
@@ -99,12 +99,6 @@ export class Tenuebloc extends Entity {
   longueurPantalon: number;
 
   @property({
-    type: 'boolean',
-    required: true,
-  })
-  bordure: boolean;
-
-  @property({
     type: 'string',
     required: true,
   })
@@ -113,10 +107,9 @@ export class Tenuebloc extends Entity {
   @property({
     type: 'string',
     id: true,
-    defaultFn: 'uuidv4'
+    defaultFn: 'uuidv4',
   })
   identifiantTenue?: string;
-
 
   constructor(data?: Partial<Tenuebloc>) {
     super(data);

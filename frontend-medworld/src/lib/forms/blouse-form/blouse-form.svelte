@@ -6,7 +6,6 @@
 	let formData = {
 		modele: '',
 		couleur:'',            // done
-		avecBordure: false,    // done
 		nom: '',               // done
 		prenom: '',            // done
 		telephone: '',
@@ -48,7 +47,7 @@
 
 			<div class="downward-input">
 				<label class="block" for="prenom">Prénom</label>
-				<input class="input-standard" type="text" bind:value={formData.prenom} id="prenom" />
+				<input class="input-standard" type="text" bind:value={formData.prenom} id="prenom" data-test="prenom"/>
 			</div>
 
 			<div class="downward-input">
@@ -63,12 +62,17 @@
 					<option class="" value=false> Femme </option>
 				</select>
 			</div>
-
+			<!--  -->
 			<div class="downward-input">
 				<label class="block" for="telephone">Téléphone</label>
-				<input class="input-standard" type="text" bind:value={formData.telephone} id="telephone" />
+				<input
+					class="input-standard"
+					type="text"
+					bind:value={formData.telephone}
+					id="telephone"
+				/>
 			</div>
-
+			<!--  -->
 			<div class="downward-input">
 				<label class="block" for="logo">Logo <sup>(1)</sup></label>
 				<input
@@ -180,7 +184,8 @@
 			</div>
 
 			<div class="downward-input">
-				<label for="couleur-bordure">Couleur bordure</label>
+				<label for="couleur-bordure">Couleur bordure </label><br/>
+				<small>Remplir seulement si vous avez choisi le <b>modèle borduré</b>.</small> 
 				<select class="block input-standard" bind:value={formData.couleurBordure} id="couleur-bordure">
 					<option class="" value="rouge">Rouge</option>
 					<option class="" value="bleu">Bleu</option>

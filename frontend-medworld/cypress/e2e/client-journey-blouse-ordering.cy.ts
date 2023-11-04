@@ -8,7 +8,12 @@ describe('Testing user journey to order a product : BLOUSE', () => {
 		// Navigate to process add page
 		it('Add a new process then navigate to processes page', () => {
 			cy.visit(`${FRONT_END_URL}/commande-blouse`);
-			//   cy.getById('amplify-id-:r0:').select('Credit')
+                // cy.getById('amplify-id-:r0:').select('Credit')
+                cy.get('[data-test="prenom"]').type('Abdoulaye')
+                // cy.get('[data-test="nom"]').type('SAMBE')
+                // cy.get('[data-test="nom"]').type('SAMBE')
+                // cy.get('[data-test="nom"]').type('SAMBE')
+                
 			//   cy.getById('amplify-id-:r2:').type('Octroi d\'un crédit immobilier	')
 			//   cy.get('.amplify-grid').find('.amplify-button').eq(1).click()
 			//   cy.visit(ADMIN_PROCESSES_PAGE)

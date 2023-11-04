@@ -8,7 +8,7 @@
 		prenom: '',
 		sexe: false,
 		couleur: '',
-		logo: false,
+		logo: '',
 		cou: 0,
 		epaule: 0,
 		poitrine: 0,
@@ -19,14 +19,11 @@
 		tourFesse: 0,
 		cuisse: 0,
 		longueurPantalon: 0,
-		bordure: true,
 		couleurBordure: ''
 	};
 
 	function handleOnSubmit(event:Event) {
 		formData.sexe = Boolean(formData.sexe);
-		formData.bordure = Boolean(formData.bordure);
-		formData.logo = Boolean(formData.logo);
 		fetch(BACKEND_TENUE_BLOC_URL, {
 			method:'POST',
 			headers: {
@@ -60,8 +57,8 @@
 			</div>
 
 			<div class="downward-input">
-				<label for="sexe">sexe</label>
-				<select class="block input-standard" bind:value={formData.sexe} id="sexe">
+				<label for="sexe">Sexe</label>
+				<select class="w-[100%] h-[3rem] rounded-[8px] bg-[#FFFFFF]" bind:value={formData.sexe} id="sexe">
 					<option class="" value=true > Homme </option>
 					<option class="" value=false> Femme </option>
 				</select>
@@ -69,11 +66,13 @@
 
 
 			<div class="downward-input">
-				<label for="logo">logo</label>
-				<select class="block input-standard" bind:value={formData.logo} id="logo">
-					<option class="" value=true > Avec logo </option>
-					<option class="" value=false> Sans logo</option>
-				</select>
+				<label class="block" for="logo">Logo <sup>(1)</sup></label>
+				<input
+					class="input-standard"
+					type="text"
+					bind:value={formData.logo}
+					id="logo"
+				/>
 			</div>
 		</fieldset>
 
@@ -105,21 +104,26 @@
 						required
 					/>
 				</div>
+				<div id="cou" class="downward-input w-[50%] ">
+					<label class="block" for="cou">cou</label><input
+						class="w-[100%]"
+						id="cou"
+						name="cou"
+						inputmode="numeric"
+						pattern="\d*"
+						type="number"
+						bind:value={formData.cou}
+						required
+					/>
+				</div>
 			</div>
 
 			<div class="input-group flex justify-between gap-[1rem] w-[100%]">
-				<div class="downward-input">
+				<!-- <div class="downward-input">
 					<label class="block" for="avecBordure">Bordure</label>
 					<input class="input-standard" type="checkbox" bind:checked={formData.bordure} id="bordure" />
-				</div>
-				<div class="downward-input">
-					<label for="couleur-bordure">Couleur bordure</label>
-					<select class="block input-standard" bind:value={formData.couleurBordure} id="couleur-bordure">
-						<option class="" value="Rouge">Rouge</option>
-						<option class="" value="Bleu">Bleu</option>
-						<option class=""  value="Choisissez pour moi">Choisissez pour moi</option>
-					</select>
-				</div>
+				</div> -->
+
 
 				<div class="downward-input w-[50%] m-0">
 					<label class="block  w-full" for="manche">Manche</label><input
@@ -219,12 +223,25 @@
 				</div>
 			</div>
 			<div class="downward-input">
-				<label for="couleur">Couleur</label>
+				<label for="couleur">Couleur tenue</label>
 				<select
 					class="w-[100%] h-[3rem] rounded-[8px] bg-[#FFFFFF]"
 					name="couleur"
 					id="couleur"
 					bind:value={formData.couleur}
+				>
+					<option class="" value="rouge">Rouge</option>
+					<option class="" value="bleu">Bleu</option>
+				</select>
+			</div>
+			<div class="downward-input">
+				<label for="couleur-bordure">Couleur bordure</label><br/>
+				<small>Remplir seulement si vous avez choisi le <b>modèle borduré</b>.</small>
+				<select
+					class="w-[100%] h-[3rem] rounded-[8px] bg-[#FFFFFF]"
+					name="couleur-bordure"
+					id="couleur-bordure"
+					bind:value={formData.couleurBordure}
 				>
 					<option class="" value="rouge">Rouge</option>
 					<option class="" value="bleu">Bleu</option>
