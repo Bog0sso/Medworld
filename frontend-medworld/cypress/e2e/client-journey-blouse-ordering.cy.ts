@@ -2,13 +2,13 @@
 // 1. create process
 // 2. create risk
 const FRONT_END_URL = 'http://localhost:5173';
-
 describe('Testing user journey to order a product : BLOUSE', () => {
 	context('Context: Add a new process', () => {
 		// Navigate to process add page
 		it('Add a new process then navigate to processes page', () => {
 			cy.visit(`${FRONT_END_URL}/commande-blouse`);
-			// cy.getById('amplify-id-:r0:').select('Credit')
+
+			// Client informations
 			cy.get('#prenom')
 							.click()
 							.wait(50)
@@ -35,7 +35,7 @@ describe('Testing user journey to order a product : BLOUSE', () => {
 							.type('École Supérieure Polytechnique')
 							.should('have.value','École Supérieure Polytechnique');
 
-			// Informations tenue
+			// Outfit informations
 			cy.get('#modele').select('Classic').should('have.value','Classic');
 			cy.get('#epaule').clear().type('76').should('have.value','76');
 			cy.get('#cou').clear().type('29').should('have.value','29');
@@ -44,12 +44,9 @@ describe('Testing user journey to order a product : BLOUSE', () => {
 			cy.get('#tourManche').clear().type('18').should('have.value','18');
 			cy.get('#tourFesse').clear().type('54').should('have.value','54');
 			cy.get('#longueur-blouse').clear().type('120').should('have.value','120');
-			//   cy.getById('amplify-id-:r2:').type('Octroi d\'un crédit immobilier	')
-			//   cy.get('.amplify-grid').find('.amplify-button').eq(1).click()
 			cy.get('#couleur').select('Bleu').should('have.value','bleu');
 			cy.get('#couleur-bordure').select('Rouge').should('have.value','rouge');
 			cy.get('#commander-blouse').click();
-			// cy.visit(FRONT_END_URL);
 		});
 	});
 });

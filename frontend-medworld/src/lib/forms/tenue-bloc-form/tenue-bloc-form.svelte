@@ -66,6 +66,11 @@
 			</div>
 
 			<div class="downward-input">
+				<label class="block" for="telephone">Téléphone</label>
+				<input class="input-standard" type="text" bind:value={formData.telephone} id="telephone" />
+			</div>
+
+			<div class="downward-input">
 				<label class="block" for="logo">Logo <sup>(1)</sup></label>
 				<input class="input-standard" type="text" bind:value={formData.logo} id="logo" />
 			</div>
@@ -102,7 +107,7 @@
 					/>
 				</div>
 				<div id="cou" class="downward-input w-[50%] ">
-					<label class="block" for="cou">cou</label><input
+					<label class="w-[100%]" for="cou">cou</label><input
 						class="w-[100%]"
 						id="cou"
 						name="cou"
@@ -254,7 +259,7 @@
 		</fieldset>
 	</div>
 	<fieldset class="max-w-[800px] w-[100%] mx-auto px-[1rem]">
-		<button class=" text-[#FFFFFF] bg-[#222222] h-[3rem] w-[100%] rounded-[.5rem]">
+		<button class=" text-[#FFFFFF] bg-[#222222] h-[3rem] w-[100%] rounded-[.5rem]" id="commander-tenue-bloc">
 			Commander
 		</button>
 	</fieldset>
