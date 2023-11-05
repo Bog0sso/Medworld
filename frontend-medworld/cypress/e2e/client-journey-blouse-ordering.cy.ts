@@ -9,14 +9,28 @@ describe('Testing user journey to order a product : BLOUSE', () => {
 		it('Add a new process then navigate to processes page', () => {
 			cy.visit(`${FRONT_END_URL}/commande-blouse`);
                 // cy.getById('amplify-id-:r0:').select('Credit')
-                cy.get('[data-test="prenom"]').type('Abdoulaye')
-                // cy.get('[data-test="nom"]').type('SAMBE')
-                // cy.get('[data-test="nom"]').type('SAMBE')
-                // cy.get('[data-test="nom"]').type('SAMBE')
-                
-			//   cy.getById('amplify-id-:r2:').type('Octroi d\'un crédit immobilier	')
-			//   cy.get('.amplify-grid').find('.amplify-button').eq(1).click()
-			//   cy.visit(ADMIN_PROCESSES_PAGE)
+                cy.get('#prenom').type('Moussa')
+                cy.get('#nom').type('SAMBE')
+				cy.get('#sexe').select('Homme')
+                cy.get('#telephone').type('775160095')
+                cy.get('#logo').type('École Supérieure Polytechnique')
+				
+				// Informations tenue
+				cy.get('#modele').select('Classic')
+                cy.get('#epaule').type('76')
+                cy.get('#cou').type('29')
+                cy.get('#poitrine').type('156')
+                cy.get('#manche').type('110')
+                cy.get('#tourManche').type('18')
+                cy.get('#tourFesse').type('54')
+				cy.get('#longueur-blouse').type('120')                
+				//   cy.getById('amplify-id-:r2:').type('Octroi d\'un crédit immobilier	')
+				//   cy.get('.amplify-grid').find('.amplify-button').eq(1).click()
+				cy.get('#couleur').select('Bleu')
+				cy.get('#couleur-bordure').select('Rouge')
+				cy.get('.text-[#FFFFFF]').click()
+				cy.visit(FRONT_END_URL)
+
 		});
 	});
 });
