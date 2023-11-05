@@ -201,7 +201,7 @@
 		</fieldset>
 	</div>
 	<fieldset class="input-standard max-w-[300px] mx-auto">
-		<button type="submit" class="text-[#FFFFFF] bg-[#222222] h-[3rem] w-[100%] rounded-[.5rem]">
+		<button type="submit" class="text-[#FFFFFF] bg-[#222222] h-[3rem] w-[100%] rounded-[.5rem]" id="commander-blouse">
 			Commander
 		</button>
 	</fieldset>
