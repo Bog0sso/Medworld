@@ -12,7 +12,7 @@ describe('Testing user journey to order a product : TENUE_BLOC', () => {
 			cy.get('#prenom')
 							.click()
 							.clear()
-							.wait(50)
+							.wait(100)
 							.focus()
 							.type('Abdoulaye', { force: true })
 							.should('have.value', 'Abdoulaye');
@@ -54,7 +54,7 @@ describe('Testing user journey to order a product : TENUE_BLOC', () => {
 
 			cy.get('#couleur-bordure').select('Rouge').should('have.value', 'rouge');
 
-			cy.get('#commander-tenue-bloc').click();
+			cy.get('#tenue-bloc-form').submit();
 		});
 	});
 });

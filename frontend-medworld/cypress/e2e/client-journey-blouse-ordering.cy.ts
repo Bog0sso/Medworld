@@ -46,7 +46,7 @@ describe('Testing user journey to order a product : BLOUSE', () => {
 			cy.get('#longueur-blouse').clear().type('120').should('have.value','120');
 			cy.get('#couleur').select('Bleu').should('have.value','bleu');
 			cy.get('#couleur-bordure').select('Rouge').should('have.value','rouge');
-			cy.get('#commander-blouse').click();
+			cy.get('#blouse-form').submit();
 		});
 	});
 });

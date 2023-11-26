@@ -1,11 +1,12 @@
 <script lang="ts">
-	const BACKEND_TENUE_BLOC_URL = 'http://localhost:3000/tenueblocs';
+	const BACKEND_TENUE_BLOC_URL = 'http://localhost:3000/bloc-tenues';
 
 	let sexe = new Boolean(false);
 	let formData = {
 		nom: '',
 		prenom: '',
 		sexe: false,
+		modele: 'Classic',
 		couleur: '',
 		logo: '',
 		cou: 0,
@@ -18,7 +19,8 @@
 		tourFesse: 0,
 		cuisse: 0,
 		longueurPantalon: 0,
-		couleurBordure: ''
+		couleurBordure: '',
+		telephone: ''
 	};
 
 	function handleOnSubmit(event: Event) {
@@ -35,6 +37,7 @@
 </script>
 
 <form
+	id="tenue-bloc-form"
 	class="m-[1%] h-[100%] bg-[#FEEEEE] p-[1rem]"
 	on:submit|preventDefault={handleOnSubmit}
 	method="POST"
@@ -78,6 +81,20 @@
 
 		<fieldset class="max-w-[800px] fieldset-standard flex-col w-[100%] mx-auto p-[1%]">
 			<h2 class="fieldset-title">Informations tenue</h2>
+			<!-- editing -->
+			<div class="downward-input">
+				<label for="modele">Modèle</label>
+				<select
+					class="w-[100%] h-[3rem] rounded-[8px] bg-[#FFFFFF]"
+					name="modele"
+					id="modele"
+					bind:value={formData.modele}
+				>
+					<option class="" value="classic">Classique</option>
+					<option class="" value="bordered">Borduré</option>
+				</select>
+			</div>
+			<!-- editing -->
 
 			<div class="input-group flex justify-between gap-[1rem] w-[100%]">
 				<div class="downward-input w-[50%] ">
@@ -259,7 +276,10 @@
 		</fieldset>
 	</div>
 	<fieldset class="max-w-[800px] w-[100%] mx-auto px-[1rem]">
-		<button class=" text-[#FFFFFF] bg-[#222222] h-[3rem] w-[100%] rounded-[.5rem]" id="commander-tenue-bloc">
+		<button
+			class=" text-[#FFFFFF] bg-[#222222] h-[3rem] w-[100%] rounded-[.5rem]"
+			id="commander-tenue-bloc"
+		>
 			Commander
 		</button>
 	</fieldset>

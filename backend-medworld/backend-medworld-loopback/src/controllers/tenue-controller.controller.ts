@@ -4,15 +4,22 @@ import {
   Filter,
   FilterExcludingWhere,
   repository,
-  Where
+  Where,
 } from '@loopback/repository';
 import {
-  del, get,
-  getModelSchemaRef, param, patch, post, put, requestBody,
-  response
+  del,
+  get,
+  getModelSchemaRef,
+  param,
+  patch,
+  post,
+  put,
+  requestBody,
+  response,
 } from '@loopback/rest';
 import {Tenuebloc} from '../models';
 import {TenueblocRepository} from '../repositories';
+import {verifyNumber} from '../services';
 
 export class TenueControllerController {
   constructor(
@@ -38,6 +45,8 @@ export class TenueControllerController {
     })
     tenuebloc: Omit<Tenuebloc, 'identifiantTenue'>,
   ): Promise<Tenuebloc> {
+    verifyNumber();
+    console.timeLog();
     return this.tenueblocRepository.create(tenuebloc);
   }
 
@@ -100,7 +109,8 @@ export class TenueControllerController {
   })
   async findById(
     @param.path.string('id') id: string,
-    @param.filter(Tenuebloc, {exclude: 'where'}) filter?: FilterExcludingWhere<Tenuebloc>
+    @param.filter(Tenuebloc, {exclude: 'where'})
+    filter?: FilterExcludingWhere<Tenuebloc>,
   ): Promise<Tenuebloc> {
     return this.tenueblocRepository.findById(id, filter);
   }

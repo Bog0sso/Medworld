@@ -56,7 +56,8 @@
     "@loopback/service-proxy": "^5.0.9",
     "loopback-connector-mysql": "^5.4.4",
     "loopback-connector-rest": "^4.0.3",
-    "tslib": "^2.0.0"
+    "tslib": "^2.0.0",
+    "twilio": "^4.19.0"
   },
   "devDependencies": {
     "@loopback/build": "^9.0.9",

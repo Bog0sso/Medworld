@@ -1,10 +1,13 @@
 <script lang="ts">
 	import Navbar from '$lib/navbar/navbar.svelte';
+	import { document } from 'postcss';
+	import { writable } from 'svelte/store';
 
 	const BACKEND_BLOUSE_URL = 'http://localhost:3000/blouses';
+	const BACKEND_VERIFICATION_URL ='http://localhost:3000/send-verification-code'
 
 	let formData = {
-		modele: '',
+		modele: '', //done
 		couleur: '', // done
 		nom: '', // done
 		prenom: '', // done
@@ -30,10 +33,33 @@
 			body: JSON.stringify(formData)
 		});
 		console.log(formData);
+		alert("data submitted")
+		sendVerificationCode();
+	}
+	function sendVerificationCode() {
+		fetch(BACKEND_VERIFICATION_URL, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify(formData.telephone)
+		})
+	}
+	let visible = false;
+	// if(formData.modele == "bordered"){
+		// visible.set(false)
+	// }
+	// 
+	function handleModelSelectChange(event: Event) {
+    visible = event.target.value=="bordered"?true:false; // Update the selected value
+    // Perform actions or updates based on the selected value
+    console.log("Selected value:", visible);
+    // ... other logic or UI updates based on selectedValue
 	}
 </script>
 
 <form
+	id="blouse-form"
 	class="m-[2%] h-[100%] bg-[#FEEEEE] p-[1rem]"
 	on:submit|preventDefault={handleOnSubmit}
 	method="POST"
@@ -52,17 +78,18 @@
 					bind:value={formData.prenom}
 					id="prenom"
 					data-test="prenom"
+					required
 				/>
 			</div>
 
 			<div class="downward-input">
 				<label class="block" for="nom">Nom</label>
-				<input class="input-standard" type="text" bind:value={formData.nom} id="nom" />
+				<input class="input-standard" type="text" bind:value={formData.nom} id="nom" required/>
 			</div>
 
 			<div class="downward-input">
 				<label for="sexe">Sexe</label>
-				<select class="block input-standard" bind:value={formData.sexe} id="sexe">
+				<select class="block input-standard" bind:value={formData.sexe} id="sexe" required>
 					<option class="" value="true"> Homme </option>
 					<option class="" value="false"> Femme </option>
 				</select>
@@ -70,7 +97,7 @@
 			<!--  -->
 			<div class="downward-input">
 				<label class="block" for="telephone">Téléphone</label>
-				<input class="input-standard" type="text" bind:value={formData.telephone} id="telephone" />
+				<input class="input-standard" type="text" bind:value={formData.telephone} id="telephone" required/>
 			</div>
 			<!--  -->
 			<div class="downward-input">
@@ -83,16 +110,16 @@
 			<h2 class="fieldset-title">Informations blouse</h2>
 			<small>Toutes les mesures sont en centimètre</small>
 			<div class="downward-input">
-				<label for="modele"> Modèle bouse</label>
-				<select class="block input-standard" bind:value={formData.modele} id="modele">
+				<label for="modele"> Modèle blouse</label>
+				<select class="block input-standard" bind:value={formData.modele} id="modele" required on:change={handleModelSelectChange}>
 					<option class="" value="Classic">Classic</option>
-					<option class="" value="Bordered">Borduré</option>
+					<option class="" value="bordered">Borduré</option>
 					<option class="" value="DeuxTons">Deux tons</option>
 				</select>
 			</div>
 
 			<div class="downward-input">
-				<label class="block" for="prenom">Epaule</label>
+				<label class="block" for="epaule">Epaule</label>
 				<input
 					class="input-standard"
 					inputmode="numeric"
@@ -184,7 +211,7 @@
 					<option class="" value="bleu">Bleu</option>
 				</select>
 			</div>
-
+			{#if visible}
 			<div class="downward-input">
 				<label for="couleur-bordure">Couleur bordure </label><br />
 				<small>Remplir seulement si vous avez choisi le <b>modèle borduré</b>.</small>
@@ -198,6 +225,7 @@
 					<option class="" value="Choisissez pour moi">Choisissez pour moi</option>
 				</select>
 			</div>
+			{/if}
 		</fieldset>
 	</div>
 	<fieldset class="input-standard max-w-[300px] mx-auto">
