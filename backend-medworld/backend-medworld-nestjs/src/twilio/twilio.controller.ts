@@ -1,22 +1,21 @@
 // auth.controller.ts
-import { Controller, Post, Body } from '@nestjs/common';
+import { Body, Controller, Post } from '@nestjs/common';
 import { TwilioService } from './twilio.service';
+import { SmsDto } from 'src/bloc-tenues/dto/sms.dto';
 
-@Controller('auth')
-export class AuthController {
+@Controller('sms')
+export class TwilioController {
   constructor(private readonly twilioService: TwilioService) {}
 
-  @Post('send-verification-code')
-  async sendVerificationCode(@Body('telephone') phoneNumber: string) {
-    const verificationCode = Math.floor(1000 + Math.random() * 9000).toString(); // Generate a random code
+  @Post()
+  async sendSMS(@Body() smsDto: SmsDto) {
+    // const verificationCode = Math.floor(1000 + Math.random() * 9000).toString(); // Generate a random code
     try {
-      await this.twilioService.sendVerificationCode(
-        phoneNumber,
-        verificationCode,
-      );
-      return { message: 'Verification code sent successfully' };
+      const response = await this.twilioService.sendSMS(smsDto.telephone);
+      console.log('This is the phone number:' + response.body);
+      return `SMS sent successfully. SID: ${smsDto.telephone}`;
     } catch (error) {
-      return { error: error.message };
+      return `Failed to send SMS: ${error.message}`;
     }
   }
 }

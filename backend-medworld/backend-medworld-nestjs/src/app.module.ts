@@ -8,11 +8,13 @@ import { BlocTenuesModule } from './bloc-tenues/bloc-tenues.module';
 import { BlocTenue } from './bloc-tenues/entities/bloc-tenue.entity';
 import { Blouse } from './blouses/entities/blouse.entity';
 import { TwilioService } from './twilio/twilio.service';
+import { TwilioModule } from './twilio/twilio.module';
 
 @Module({
   imports: [
     BlousesModule,
     BlocTenuesModule,
+    TwilioModule,
     TypeOrmModule.forRoot({
       type: 'mysql',
       host: 'localhost',

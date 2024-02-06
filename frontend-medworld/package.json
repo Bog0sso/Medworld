@@ -8,7 +8,7 @@
 		"package": "svelte-kit package",
 		"preview": "vite preview",
 		"test": "npm run build && playwright test",
-		"test e2e" : "",
+		"test e2e": "",
 		"check": "svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
 		"lint": "prettier --check --plugin-search-dir=. . && eslint .",
@@ -20,12 +20,15 @@
 		"@sveltejs/kit": "next",
 		"@typescript-eslint/eslint-plugin": "^5.27.0",
 		"@typescript-eslint/parser": "^5.27.0",
-		"autoprefixer": "^10.4.8",
+		"autoprefixer": "^10.4.16",
 		"cypress": "^12.17.4",
 		"eslint": "^8.16.0",
 		"eslint-config-prettier": "^8.3.0",
 		"eslint-plugin-svelte3": "^4.0.0",
-		"postcss": "^8.4.16",
+		"flowbite": "^2.2.1",
+		"flowbite-svelte": "^0.44.22",
+		"postcss": "^8.4.32",
+		"postcss-load-config": "^5.0.2",
 		"prettier": "^2.6.2",
 		"prettier-plugin-svelte": "^2.7.0",
 		"svelte": "^3.44.0",
@@ -42,6 +45,8 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"caniuse-lite": "^1.0.30001486"
+		"@sveltejs/package": "^2.2.4",
+		"caniuse-lite": "^1.0.30001486",
+		"svelte-tel-input": "^3.3.9"
 	}
 }

@@ -1,25 +1,25 @@
 <script lang="ts">
-	// 
+	//
 	import { TelInput, normalizedCountries } from 'svelte-tel-input';
-  	import type { DetailedValue, CountryCode, E164Number } from 'svelte-tel-input/types';
+	import type { DetailedValue, CountryCode, E164Number } from 'svelte-tel-input/types';
 
-  //Country
-  let country: string | null;
-  // Any Country Code Alpha-2 (ISO 3166)
-  let selectedCountry: CountryCode | null = 'HU';
+	//Country
+	let country: string | null;
+	// Any Country Code Alpha-2 (ISO 3166)
+	let selectedCountry: CountryCode | null = 'HU';
 
-  // You must use E164 number format. It's guarantee the parsing and storing consistency.
-  let value: E164Number;
+	// You must use E164 number format. It's guarantee the parsing and storing consistency.
+	let value: E164Number;
 
-  // Validity
-  let valid = true;
+	// Validity
+	let valid = true;
 
-  // Optional - Extended details about the parsed phone number
-  let detailedValue: DetailedValue | null = null;
-	// 
+	// Optional - Extended details about the parsed phone number
+	let detailedValue: DetailedValue | null = null;
+	//
 
 	const BACKEND_BLOUSE_URL = 'http://localhost:3000/blouses';
-	const BACKEND_VERIFICATION_URL ='http://localhost:3000/sms'
+	const BACKEND_VERIFICATION_URL = 'http://localhost:3000/sms';
 
 	let formData = {
 		modele: '', //done
@@ -41,8 +41,8 @@
 	function handleOnSubmit(event: Event) {
 		formData.sexe = Boolean(formData.sexe);
 		formData.telephone = value.toString();
-		console.log("==Before sending==")
-		console.log(formData.telephone)
+		console.log('==Before sending==');
+		console.log(formData.telephone);
 		fetch(BACKEND_BLOUSE_URL, {
 			method: 'POST',
 			headers: {
@@ -51,7 +51,7 @@
 			body: JSON.stringify(formData)
 		});
 		console.log(formData);
-		alert("data submitted")
+		alert('data submitted');
 		sendVerificationCode();
 	}
 	function sendVerificationCode() {
@@ -61,19 +61,19 @@
 				'Content-Type': 'application/json'
 			},
 			body: JSON.stringify(formData.telephone)
-		})
-		console.log("Value sended in sendVerificationCode()" + value);
+		});
+		console.log('Value sended in sendVerificationCode()' + value);
 	}
 	let visible = false;
 	// if(formData.modele == "bordered"){
-		// visible.set(false)
+	// visible.set(false)
 	// }
-	// 
+	//
 	function handleModelSelectChange(event: Event) {
-    visible = event.target.value == "bordered" ? true : false; // Update the selected value
-    // Perform actions or updates based on the selected value
-    console.log("Selected value:", visible);
-    // ... other logic or UI updates based on selectedValue
+		visible = event.target.value == 'bordered' ? true : false; // Update the selected value
+		// Perform actions or updates based on the selected value
+		console.log('Selected value:', visible);
+		// ... other logic or UI updates based on selectedValue
 	}
 </script>
 
@@ -83,10 +83,10 @@
 	on:submit|preventDefault={handleOnSubmit}
 	method="POST"
 >
-	<h1 class="w-full font-bold uppercase text-3xl text-center">Commande d'une blouse médicale</h1>
+	<h1 class="w-full text-center text-3xl font-bold uppercase">Commande d'une blouse médicale</h1>
 
-	<div class="form-content gap-[1rem] w-[90%] flex flex-col my-[4rem] mx-auto justify-center">
-		<fieldset class="max-w-[800px] fieldset-standard flex-col w-[100%] mx-auto p-[1%]">
+	<div class="form-content mx-auto my-[4rem] flex w-[90%] flex-col justify-center gap-[1rem]">
+		<fieldset class="fieldset-standard mx-auto w-[100%] max-w-[800px] flex-col p-[1%]">
 			<h2 class="fieldset-title">Informations personnelles</h2>
 
 			<div class="downward-input">
@@ -103,12 +103,12 @@
 
 			<div class="downward-input">
 				<label class="block" for="nom">Nom</label>
-				<input class="input-standard" type="text" bind:value={formData.nom} id="nom" required/>
+				<input class="input-standard" type="text" bind:value={formData.nom} id="nom" required />
 			</div>
 
 			<div class="downward-input">
 				<label for="sexe">Sexe</label>
-				<select class="block input-standard" bind:value={formData.sexe} id="sexe" required>
+				<select class="input-standard block" bind:value={formData.sexe} id="sexe" required>
 					<option class="" value="true"> Homme </option>
 					<option class="" value="false"> Femme </option>
 				</select>
@@ -121,32 +121,32 @@
 			<!-- NEW PHONE INPUT---SVELTE PACKAGE -->
 			<div class="wrapper">
 				<!-- svelte-ignore a11y-label-has-associated-control -->
-				<label>Téléphone:</label><br>
+				<label>Téléphone:</label><br />
 				<select
-				  class="country-select {!valid ? 'invalid' : ''}"
-				  aria-label="Default select example"
-				  name="Country"
-				  bind:value={selectedCountry}
+					class="country-select {!valid ? 'invalid' : ''}"
+					aria-label="Default select example"
+					name="Country"
+					bind:value={selectedCountry}
 				>
-				  <option value={null} hidden={country !== null}>Please select</option>
-				  {#each normalizedCountries as currentCountry (currentCountry.id)}
-					<option
-					value={currentCountry.iso2}
-					  selected={currentCountry.iso2 === country}
-					  aria-selected={currentCountry.iso2 === country}
-					>
-					  {currentCountry.iso2} (+{currentCountry.dialCode})
-					</option>
-				  {/each}
+					<option value={null} hidden={country !== null}>Please select</option>
+					{#each normalizedCountries as currentCountry (currentCountry.id)}
+						<option
+							value={currentCountry.iso2}
+							selected={currentCountry.iso2 === country}
+							aria-selected={currentCountry.iso2 === country}
+						>
+							{currentCountry.iso2} (+{currentCountry.dialCode})
+						</option>
+					{/each}
 				</select>
 				<TelInput
-				bind:country={selectedCountry}
-				bind:value
-				bind:valid
-				bind:detailedValue
-				class="basic-tel-input {!valid ? 'invalid' : ''}"
-			  />
-			  </div>
+					bind:country={selectedCountry}
+					bind:value
+					bind:valid
+					bind:detailedValue
+					class="basic-tel-input {!valid ? 'invalid' : ''}"
+				/>
+			</div>
 			<!--  -->
 			<div class="downward-input">
 				<label class="block" for="logo">Logo <sup>(1)</sup></label>
@@ -154,12 +154,18 @@
 			</div>
 		</fieldset>
 
-		<fieldset class="max-w-[800px] fieldset-standard flex-col w-[100%] mx-auto p-[1%]">
+		<fieldset class="fieldset-standard mx-auto w-[100%] max-w-[800px] flex-col p-[1%]">
 			<h2 class="fieldset-title">Informations blouse</h2>
 			<small>Toutes les mesures sont en centimètre</small>
 			<div class="downward-input">
 				<label for="modele"> Modèle blouse</label>
-				<select class="block input-standard" bind:value={formData.modele} id="modele" required on:change={handleModelSelectChange}>
+				<select
+					class="input-standard block"
+					bind:value={formData.modele}
+					id="modele"
+					required
+					on:change={handleModelSelectChange}
+				>
 					<option class="" value="Classic">Classic</option>
 					<option class="" value="bordered">Borduré</option>
 					<option class="" value="DeuxTons">Deux tons</option>
@@ -254,30 +260,34 @@
 
 			<div class="downward-input">
 				<label for="couleur">Couleur blouse</label>
-				<select class="block input-standard" bind:value={formData.couleur} id="couleur">
+				<select class="input-standard block" bind:value={formData.couleur} id="couleur">
 					<option class="" value="rouge">Rouge</option>
 					<option class="" value="bleu">Bleu</option>
 				</select>
 			</div>
 			{#if visible}
-			<div class="downward-input">
-				<label for="couleur-bordure">Couleur bordure </label><br />
-				<small>Remplir seulement si vous avez choisi le <b>modèle borduré</b>.</small>
-				<select
-					class="block input-standard"
-					bind:value={formData.couleurBordure}
-					id="couleur-bordure"
-				>
-					<option class="" value="rouge">Rouge</option>
-					<option class="" value="bleu">Bleu</option>
-					<option class="" value="Choisissez pour moi">Choisissez pour moi</option>
-				</select>
-			</div>
+				<div class="downward-input">
+					<label for="couleur-bordure">Couleur bordure </label><br />
+					<small>Remplir seulement si vous avez choisi le <b>modèle borduré</b>.</small>
+					<select
+						class="input-standard block"
+						bind:value={formData.couleurBordure}
+						id="couleur-bordure"
+					>
+						<option class="" value="rouge">Rouge</option>
+						<option class="" value="bleu">Bleu</option>
+						<option class="" value="Choisissez pour moi">Choisissez pour moi</option>
+					</select>
+				</div>
 			{/if}
 		</fieldset>
 	</div>
-	<fieldset class="input-standard max-w-[300px] mx-auto">
-		<button type="submit" class="text-[#FFFFFF] bg-[#222222] h-[3rem] w-[100%] rounded-[.5rem]" id="commander-blouse">
+	<fieldset class="input-standard mx-auto max-w-[300px]">
+		<button
+			type="submit"
+			class="h-[3rem] w-[100%] rounded-[.5rem] bg-[#222222] text-[#FFFFFF]"
+			id="commander-blouse"
+		>
 			Commander
 		</button>
 	</fieldset>
@@ -314,27 +324,26 @@
 		}
 	}
 
-
 	/* PHONE CONFIRMATION */
 	.wrapper :global(.basic-tel-input) {
-    height: 32px;
-    padding-left: 12px;
-    padding-right: 12px;
-    border-radius: 6px;
-    border: 1px solid;
-    outline: none;
-  }
+		height: 32px;
+		padding-left: 12px;
+		padding-right: 12px;
+		border-radius: 6px;
+		border: 1px solid;
+		outline: none;
+	}
 
-  .wrapper :global(.country-select) {
-    height: 36px;
-    padding-left: 12px;
-    padding-right: 12px;
-    border-radius: 6px;
-    border: 1px solid;
-    outline: none;
-  }
+	.wrapper :global(.country-select) {
+		height: 36px;
+		padding-left: 12px;
+		padding-right: 12px;
+		border-radius: 6px;
+		border: 1px solid;
+		outline: none;
+	}
 
-  .wrapper :global(.invalid) {
-    border-color: red;
-  }
+	.wrapper :global(.invalid) {
+		border-color: red;
+	}
 </style>
