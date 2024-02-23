@@ -48,4 +48,7 @@ export class Blouse {
 
   @Column()
   tourFesse: number;
+
+  @Column()
+  statutCommande: string;
 }

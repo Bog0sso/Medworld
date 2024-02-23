@@ -27,7 +27,7 @@
 		"eslint-config-prettier": "^9.1.0",
 		"eslint-plugin-svelte": "^2.35.1",
 		"flowbite": "^2.2.1",
-		"flowbite-svelte": "^0.44.22",
+		"flowbite-svelte": "^0.44.24",
 		"postcss": "^8.4.32",
 		"postcss-load-config": "^5.0.2",
 		"prettier": "^3.1.1",
@@ -43,6 +43,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"flowbite-svelte-icons": "^1.3.1",
 		"svelte-tel-input": "^3.3.9"
 	}
 }

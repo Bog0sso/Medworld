@@ -38,7 +38,7 @@
 	</TableBody>
 </Table> -->
 
-<script lang="ts">
+<script>
 	import OutfitWrapper from '$lib/outfit-wrapper/outfit-wrapper.svelte';
 	import TenueBlocForm from '$lib/forms/tenue-bloc-form/tenue-bloc-form.svelte';
 	import BlouseForm from '$lib/forms/blouse-form/blouse-form.svelte';

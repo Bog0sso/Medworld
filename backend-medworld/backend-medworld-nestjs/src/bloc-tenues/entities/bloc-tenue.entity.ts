@@ -57,4 +57,7 @@ export class BlocTenue {
 
   @Column()
   couleurBordure?: string;
+
+  @Column()
+  statutCommande: string;
 }

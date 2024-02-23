@@ -1,46 +1,57 @@
 <script>
-	/** @type {import('./$types').PageData} */
-
 	import {
 		Table,
-		TableBody,
-		TableBodyCell,
-		TableBodyRow,
 		TableHead,
-		TableHeadCell
+		TableHeadCell,
+		TableBody,
+		TableBodyRow,
+		TableBodyCell,
+		Label,
+		Select
 	} from 'flowbite-svelte';
-
-    export let data;
-    // console.log("content of data" + data.blouses)
-    const blouses = data.blouses;
-
-    // Fetch data from the server
-
-	// Call fetchData when the component is mounted
+	/**
+	 * @type {any}
+	 */
+	let blouses;
+	/**
+	 * @type {{ blouses: { identifiantBlouse: any; }; }}
+	 */
+	let data;
 </script>
-<!-- <h1>{data.post.title}</h1>
-<div>{@html data.post.content}</div> -->
+<div class="main">
 <Table>
 	<TableHead>
 		<!-- <TableHeadCell>{data.post.title}</TableHeadCell> -->
 		<TableHeadCell>IdentifiantBlouse</TableHeadCell>
+		<TableHeadCell>Client</TableHeadCell>
+		<TableHeadCell>Sexe</TableHeadCell>
 		<TableHeadCell>Téléphone</TableHeadCell>
 		<TableHeadCell>Couleur</TableHeadCell>
 		<TableHeadCell>Modèle</TableHeadCell>
+		<TableHeadCell>Statut commande</TableHeadCell>
 	</TableHead>
-	<TableBody>
-        <!-- <TableBodyRow>
-            <TableBodyCell>
-                hey
-            </TableBodyCell>
-        </TableBodyRow> -->
-		{#each blouses as blouse (blouse.identifiantBlouse)}
-			<TableBodyRow key={data.blouses.identifiantBlouse}>
-				<TableBodyCell>{blouse.identifiantBlouse}</TableBodyCell>
-				<TableBodyCell>{blouse.telephone}</TableBodyCell>
-				<TableBodyCell>{blouse.couleur}</TableBodyCell>
-				<TableBodyCell>{blouse.modele}</TableBodyCell>
-			</TableBodyRow>
-		{/each}
-	</TableBody>
+	<!-- <TableBody>
+			{#each blouses as blouse (blouse.identifiantBlouse)}
+				<TableBodyRow key={data.blouses.identifiantBlouse}>
+					<TableBodyCell>{blouse.identifiantBlouse}</TableBodyCell>
+					<TableBodyCell>{blouse.prenom} {blouse.nom}</TableBodyCell>
+					<TableBodyCell>{blouse.sexe}</TableBodyCell>
+					<TableBodyCell>{blouse.telephone}</TableBodyCell>
+					<TableBodyCell>{blouse.couleur}</TableBodyCell>
+					<TableBodyCell>{blouse.modele}</TableBodyCell>
+					<TableBodyCell>
+						<Label>
+							<Select class="mt-2" bind:value={blouse.statutCommande} />
+						</Label>
+					</TableBodyCell>
+				</TableBodyRow>
+			{/each}
+		</TableBody> -->
 </Table>
+</div>
+<style>
+	.main {
+		flex: 1;
+		padding: 20px;
+	}
+</style>
