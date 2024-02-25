@@ -20,7 +20,7 @@
 			<SidebarGroup>
 				<!-- <SidebarBrand {site} /> -->
 
-				<SidebarItem label="Blouses" {spanClass}>
+				<SidebarItem label="Blouses" href="blouses" {spanClass}>
 					<svelte:fragment slot="icon">
 						<MailBoxSolid
 							class="h-5 w-5 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
@@ -34,7 +34,7 @@
 						</span>
 					</svelte:fragment>
 				</SidebarItem>
-				<SidebarItem label="Tenues de bloc" {spanClass}>
+				<SidebarItem label="Tenues de bloc" href="tenue-bloc" {spanClass}>
 					<svelte:fragment slot="icon">
 						<MailBoxSolid
 							class="h-5 w-5 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
