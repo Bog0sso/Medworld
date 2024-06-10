@@ -20,7 +20,8 @@
 		cuisse: 0,
 		longueurPantalon: 0,
 		couleurBordure: '',
-		telephone: ''
+		telephone: '',
+		statutCommande: 'Validée'
 	};
 
 	function handleOnSubmit(event: Event) {
@@ -256,8 +257,24 @@
 					id="couleur"
 					bind:value={formData.couleur}
 				>
-					<option class="" value="rouge">Rouge</option>
-					<option class="" value="bleu">Bleu</option>
+				<option class="" value="Blanc">Blanc</option>
+
+				<option class="" value="Bleu">Bleu</option>
+
+				<option class="" value="Rouge">Rouge</option>
+
+				<option class="" value="Vert">Vert</option>
+
+				<option class="" value="Gris">Gris</option>
+
+				<option class="" value="Rose">Rose</option>
+
+				<option class="" value="Mauve">Mauve</option>
+
+				<option class="" value="Marron">Marron</option>
+
+				<option class="" value="Noir">Noir</option>	
+
 				</select>
 			</div>
 			<div class="downward-input">

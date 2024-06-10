@@ -42,6 +42,7 @@
 		"vitest": "^1.2.0"
 	},
 	"type": "module",
+	
 	"dependencies": {
 		"flowbite-svelte-icons": "^1.3.1",
 		"svelte-tel-input": "^3.3.9"

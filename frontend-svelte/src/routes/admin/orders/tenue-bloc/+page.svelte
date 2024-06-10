@@ -12,6 +12,13 @@
 	
 	export let data;
 	let tenuesbloc = data.tenuesbloc;
+	let status = [
+    { value: 'Validée', name: 'Validée' },
+    { value: 'En cours', name: 'En cours' },
+    { value: 'Prête', name: 'Prête' },
+    { value: 'Livrée', name: 'Livrée' },
+    { value: 'Retour', name: 'Retour' }
+];
 </script>
 <div class="main">
 <h1>Tenues de bloc</h1>
@@ -32,13 +39,14 @@
 				<TableBodyRow key={data.tenuesbloc.identifianttenuebloc}>
 					<TableBodyCell>{tenuebloc.identifiantTenueBloc}</TableBodyCell>
 					<TableBodyCell>{tenuebloc.prenom} {tenuebloc.nom}</TableBodyCell>
-					<TableBodyCell>{tenuebloc.sexe}</TableBodyCell>
+					<TableBodyCell>{tenuebloc.sexe == true ? 'Homme':'Femme'}</TableBodyCell>
 					<TableBodyCell>{tenuebloc.telephone}</TableBodyCell>
 					<TableBodyCell>{tenuebloc.couleur}</TableBodyCell>
 					<TableBodyCell>{tenuebloc.modele}</TableBodyCell>
 					<TableBodyCell>
 						<Label>
-							<Select class="mt-2" bind:value={tenuebloc.statutCommande} />
+							<Select class="mt-2" items = {status} value={tenuebloc.statutCommande}/>
+						<!-- Validée - En cours - Prête - Livrée - Retour -->
 						</Label>
 					</TableBodyCell>
 				</TableBodyRow>

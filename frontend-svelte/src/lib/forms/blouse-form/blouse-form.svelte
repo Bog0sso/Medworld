@@ -36,7 +36,11 @@
 		manche: 0, // done
 		tourManche: 0, // done
 		longueurBlouse: 0, // done
-		tourFesse: 0 // done
+		tourFesse: 0 ,// done
+		statutCommande : 'Validée'
+	};
+	let phoneData = {
+		telephone:''
 	};
 	function handleOnSubmit(event: Event) {
 		formData.sexe = Boolean(formData.sexe);
@@ -55,13 +59,15 @@
 		sendVerificationCode();
 	}
 	function sendVerificationCode() {
+		phoneData.telephone = formData.telephone;
 		fetch(BACKEND_VERIFICATION_URL, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
 			},
-			body: JSON.stringify(formData.telephone)
+			body: JSON.stringify(phoneData)
 		});
+		console.log('Submitted client number' + phoneData.telephone);
 		console.log('Value sended in sendVerificationCode()' + value);
 	}
 	let visible = false;
@@ -261,8 +267,15 @@
 			<div class="downward-input">
 				<label for="couleur">Couleur blouse</label>
 				<select class="input-standard block" bind:value={formData.couleur} id="couleur">
-					<option class="" value="rouge">Rouge</option>
-					<option class="" value="bleu">Bleu</option>
+					<option class="" value="Blanc">Blanc</option>
+					<option class="" value="Bleu">Bleu</option>
+					<option class="" value="Rouge">Rouge</option>
+					<option class="" value="Vert">Vert</option>
+					<option class="" value="Gris">Gris</option>
+					<option class="" value="Rose">Rose</option>
+					<option class="" value="Mauve">Mauve</option>
+					<option class="" value="Marron">Marron</option>
+					<option class="" value="Noir">Noir</option>	
 				</select>
 			</div>
 			{#if visible}
@@ -274,9 +287,15 @@
 						bind:value={formData.couleurBordure}
 						id="couleur-bordure"
 					>
-						<option class="" value="rouge">Rouge</option>
-						<option class="" value="bleu">Bleu</option>
-						<option class="" value="Choisissez pour moi">Choisissez pour moi</option>
+						<option class="" value="Blanc">Blanc</option>
+						<option class="" value="Bleu">Bleu</option>
+						<option class="" value="Rouge">Rouge</option>
+						<option class="" value="Vert">Vert</option>
+						<option class="" value="Gris">Gris</option>
+						<option class="" value="Rose">Rose</option>
+						<option class="" value="Mauve">Mauve</option>
+						<option class="" value="Marron">Marron</option>
+						<option class="" value="Noir">Noir</option>
 					</select>
 				</div>
 			{/if}

@@ -1,0 +1,3 @@
+export const jwtConstants = {
+  secret: 'A VERY COMPLEX STRING VALUE COMPUTED FOR MEDWORLD BACKEND SYSTEM',
+};
