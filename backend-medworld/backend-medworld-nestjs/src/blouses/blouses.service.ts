@@ -22,13 +22,28 @@ export class BlousesService {
     return this.blousesRepository.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} blouse`;
+  //TBD : for single item details pulling
+  findOne(id: string): Promise<Blouse | undefined> {
+    return this.blousesRepository.findOneBy({ identifiantBlouse: id });
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  update(id: number, updateBlouseDto: UpdateBlouseDto) {
-    return `This action updates a #${id} blouse`;
+  // // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  // update(id: number, updateBlouseDto: UpdateBlouseDto) {
+  //   return this.blousesRepository.findOne(+ id).
+  //   // return `This action updates a #${id} blouse`;
+  // }
+  async update(updateBlouseDto: UpdateBlouseDto): Promise<Blouse | undefined> {
+    const blouse = await this.blousesRepository.findOneBy({
+      identifiantBlouse: updateBlouseDto.identifiantBlouse,
+    });
+    // return this.usersRepository.findOne({ username });
+
+    // if (!blouse) {
+    //     throw new NotFoundException(`Blouse with ID ${id} not found`);
+    // }
+
+    Object.assign(blouse, updateBlouseDto);
+    return this.blousesRepository.save(blouse);
   }
 
   remove(id: number) {

@@ -36,7 +36,7 @@
 	</TableHead>
 	<TableBody>
 			{#each tenuesbloc as tenuebloc(tenuebloc.identifiantTenueBloc)}
-				<TableBodyRow key={data.tenuesbloc.identifianttenuebloc}>
+				<TableBodyRow key={data.tenuesbloc.identifiantTenuebloc}>
 					<TableBodyCell>{tenuebloc.identifiantTenueBloc}</TableBodyCell>
 					<TableBodyCell>{tenuebloc.prenom} {tenuebloc.nom}</TableBodyCell>
 					<TableBodyCell>{tenuebloc.sexe == true ? 'Homme':'Femme'}</TableBodyCell>

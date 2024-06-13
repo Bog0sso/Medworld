@@ -1,4 +1,7 @@
 import { PartialType } from '@nestjs/mapped-types';
 import { CreateBlouseDto } from './create-blouse.dto';
 
-export class UpdateBlouseDto extends PartialType(CreateBlouseDto) {}
+export class UpdateBlouseDto extends PartialType(CreateBlouseDto) {
+  identifiantBlouse: string;
+  statutCommande: string;
+}

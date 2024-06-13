@@ -31,9 +31,9 @@ import configuration from '../config/configuration';
     }),
     AuthModule,
     UsersModule,
-    ConfigModule.forRoot(({
+    ConfigModule.forRoot({
       load: [configuration],
-    })),
+    }),
   ],
   controllers: [AppController],
   providers: [AppService, TwilioService],

@@ -33,12 +33,12 @@ export class BlousesController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.blousesService.findOne(+id);
+    return this.blousesService.findOne(id);
   }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateBlouseDto: UpdateBlouseDto) {
-    return this.blousesService.update(+id, updateBlouseDto);
+    return this.blousesService.update(updateBlouseDto);
   }
 
   @Delete(':id')
