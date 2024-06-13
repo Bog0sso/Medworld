@@ -26,6 +26,7 @@ export class BlousesService {
     return `This action returns a #${id} blouse`;
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   update(id: number, updateBlouseDto: UpdateBlouseDto) {
     return `This action updates a #${id} blouse`;
   }

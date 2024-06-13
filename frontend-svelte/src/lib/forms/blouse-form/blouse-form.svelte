@@ -67,6 +67,7 @@
 			},
 			body: JSON.stringify(phoneData)
 		});
+		console.log(phoneData);
 		console.log('Submitted client number' + phoneData.telephone);
 		console.log('Value sended in sendVerificationCode()' + value);
 	}
