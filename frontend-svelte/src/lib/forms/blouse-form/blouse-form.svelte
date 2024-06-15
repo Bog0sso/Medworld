@@ -1,12 +1,12 @@
 <script lang="ts">
 	//
-	import { TelInput, normalizedCountries } from 'svelte-tel-input';
+	import { TelInput, getCurrentCountry, normalizedCountries } from 'svelte-tel-input';
 	import type { DetailedValue, CountryCode, E164Number } from 'svelte-tel-input/types';
 
 	//Country
-	let country: string | null;
+	let country: string;
 	// Any Country Code Alpha-2 (ISO 3166)
-	let selectedCountry: CountryCode | null = 'HU';
+	let selectedCountry: CountryCode;
 
 	// You must use E164 number format. It's guarantee the parsing and storing consistency.
 	let value: E164Number;
@@ -15,7 +15,7 @@
 	let valid = true;
 
 	// Optional - Extended details about the parsed phone number
-	let detailedValue: DetailedValue | null = null;
+	let detailedValue: DetailedValue;
 	//
 
 	const BACKEND_BLOUSE_URL = 'http://localhost:3000/blouses';
