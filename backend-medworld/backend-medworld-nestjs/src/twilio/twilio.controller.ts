@@ -9,13 +9,7 @@ export class TwilioController {
 
   @Post()
   async sendSMS(@Body() smsDto: SmsDto) {
-    // const verificationCode = Math.floor(1000 + Math.random() * 9000).toString(); // Generate a random code
-    try {
-      const response = await this.twilioService.sendSMS(smsDto.telephone);
-      console.log('This is the phone number:' + response.body);
-      return `SMS sent successfully. SID: ${smsDto.telephone}`;
-    } catch (error) {
-      return `Failed to send SMS: ${error.message}`;
-    }
+    await this.twilioService.sendSMS(smsDto.telephone);
+    console.log('Phone number in controller' + smsDto.telephone);
   }
 }

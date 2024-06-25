@@ -16,14 +16,19 @@ export class TwilioService {
 
   async sendSMS(phoneNumber: string) {
     try {
-      const message = await this.twilioClient.messages.create({
-        from: '+15752134999',
-        to: phoneNumber,
-        body: '12345',
-      });
-      return message;
+      const verification = await this.twilioClient.verify.v2
+        .services(this.configService.get<string>('TWILIO_SERVICE_SID'))
+        .verifications.create({
+          channel: 'sms',
+          to: phoneNumber,
+        });
+
+      console.log('Verification SID:', verification.sid);
     } catch (error) {
-      throw new Error(`Twilio error: ${error.message}`);
+      console.error('Twilio Error:', error);
+      if (error.response) {
+        console.error('Error Details:', error.response.body);
+      }
     }
   }
 }
