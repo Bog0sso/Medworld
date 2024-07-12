@@ -56,9 +56,9 @@
 		});
 		console.log(formData);
 		alert('data submitted');
-		sendVerificationCode();
+		submitOrder();
 	}
-	function sendVerificationCode() {
+	function submitOrder() {
 		phoneData.telephone = formData.telephone;
 		fetch(BACKEND_VERIFICATION_URL, {
 			method: 'POST',
@@ -66,10 +66,12 @@
 				'Content-Type': 'application/json'
 			},
 			body: JSON.stringify(phoneData)
+		}).then(data => {
+			window.location.href = '/order-blouse/confirmation';
 		});
 		console.log(phoneData);
 		console.log('Submitted client number' + phoneData.telephone);
-		console.log('Value sended in sendVerificationCode()' + value);
+		console.log('Value sended in submitOrder()' + value);
 	}
 	let visible = false;
 	// if(formData.modele == "bordered"){
